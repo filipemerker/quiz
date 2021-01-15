@@ -142,7 +142,12 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'HelloWorld',
-  props: { msg: String },
+  props: {
+    msg: {
+      type: String,
+      default: `That's my quiz!`,
+    },
+  },
 })
 </script>
 
