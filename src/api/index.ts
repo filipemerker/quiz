@@ -63,7 +63,7 @@ export const getBookTitles = async (): Promise<BibleBooks> => {
   }
 }
 
-export const getRandomPassage = async (): Promise<PassageReference> => {
+export const getRandomReference = async (): Promise<PassageReference> => {
   try {
     const titles = await getBookTitles()
     const book = titles[random(0, 27)]

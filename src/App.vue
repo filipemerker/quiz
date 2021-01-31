@@ -1,12 +1,28 @@
 <template>
   <div>Test</div>
+  <Suspense>
+    <template #default>
+      <Challenge />
+    </template>
+    <template #fallback>
+      <span>Loading... Please wait.</span>
+    </template>
+  </Suspense>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, Suspense } from 'vue'
+import Challenge from '@/components/Challenge/Challenge.vue'
 
 export default defineComponent({
   name: 'App',
+  components: { Challenge },
+  setup() {
+    return {
+      Challenge,
+      Suspense,
+    }
+  },
 })
 </script>
 

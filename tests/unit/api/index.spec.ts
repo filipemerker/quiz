@@ -2,7 +2,7 @@ import {
   getPassage,
   getBook,
   getBookTitles,
-  getRandomPassage,
+  getRandomReference,
 } from '../../../src/api'
 
 describe('Helper - Api', () => {
@@ -71,12 +71,12 @@ describe('Helper - Api', () => {
     expect(titles.includes('1 Pedro'))
   })
 
-  it('should get a random passage of the Bible', async () => {
+  it('should get a random reference of the Bible', async () => {
     const iterations = new Array(100).fill('')
 
     iterations.forEach(async () => {
       try {
-        const random = await getRandomPassage()
+        const random = await getRandomReference()
         const passage = await getPassage(random)
 
         expect(random).toEqual({
