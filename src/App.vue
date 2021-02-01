@@ -1,13 +1,14 @@
 <template>
-  <div>Test</div>
-  <Suspense>
-    <template #default>
-      <Challenge />
-    </template>
-    <template #fallback>
-      <span>Loading... Please wait.</span>
-    </template>
-  </Suspense>
+  <div class="h-screen w-screen bg-gradient-to-t from-green-600 to-green-300">
+    <Suspense>
+      <template #default>
+        <Challenge />
+      </template>
+      <template #fallback>
+        <span>Loading... Please wait.</span>
+      </template>
+    </Suspense>
+  </div>
 </template>
 
 <script lang="ts">

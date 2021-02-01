@@ -1,14 +1,28 @@
 <template>
-  <div class="my-10 px-10">
-    <div>{{ title }}</div>
-    <button
-      v-for="alternative in question.alternatives"
-      :key="alternative"
-      class="mx-2 bg-green-400 rounded-md px-2"
-      @click="onSelect(alternative, question.rightAlternative)"
+  <div class="flex h-full flex-col justify-between">
+    <div class="w-screen px-5 flex-grow flex flex-col justify-center">
+      <div class="w-full h-auto flex flex-col flex-wrap text-center font-light">
+        <span v-if="context" class="px-6 text-md mb-4 text-gray-100 w-full">
+          {{ contextBefore }}
+        </span>
+        <span class="text-xl mb-4 w-full text-gray-50">{{ title }}</span>
+        <span v-if="context" class="px-6 text-md mb-4 text-gray-100 w-full">
+          {{ contextAfter }}
+        </span>
+      </div>
+    </div>
+    <div
+      class="shadow-sm w-screen py-5 flex flex-wrap content-center justify-center"
     >
-      {{ alternative }}
-    </button>
+      <button
+        v-for="alternative in question.alternatives"
+        :key="alternative"
+        class=" w-full mx-4 mb-3 h-12 shadow-lg bg-white text-gray-800 rounded-md px-2"
+        @click="onSelect(alternative, question.rightAlternative)"
+      >
+        {{ alternative }}
+      </button>
+    </div>
   </div>
 </template>
 
@@ -39,19 +53,4 @@ export default defineComponent({
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="postcss" scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
+<style lang="postcss" scoped></style>
