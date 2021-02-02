@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen w-screen bg-gradient-to-t from-green-600 to-green-300">
+  <div class="flex justify-center h-screen w-screen bg-gradient-to-t from-green-600 to-green-300">
     <Suspense>
       <template #default>
         <Challenge />

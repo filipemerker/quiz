@@ -1,6 +1,6 @@
 <template>
   <div class="flex h-full flex-col justify-between">
-    <div class="w-screen px-5 flex-grow flex flex-col justify-center">
+    <div class="w-full px-5 flex-grow flex flex-col justify-center">
       <div class="w-full h-auto flex flex-col flex-wrap text-center font-light">
         <span v-if="context" class="px-6 text-md mb-4 text-gray-100 w-full">
           {{ contextBefore }}
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div
-      class="shadow-sm w-screen py-5 flex flex-wrap content-center justify-center"
+      class="shadow-sm w-full py-5 flex flex-wrap content-center justify-center"
     >
       <button
         v-for="alternative in question.alternatives"

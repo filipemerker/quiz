@@ -1,11 +1,11 @@
 <template>
-  <div class="flex flex-col h-screen">
-    <header class="w-screen py-10 flex flex-wrap content-center justify-center">
+  <div class="flex flex-col h-screen w-full max-w-md">
+    <header class="w-full py-10 flex flex-wrap content-center justify-center">
       <h1 class="text-gray-50 text-2xl font-bold text-center">
         Welcome to a new challenge
       </h1>
     </header>
-    <div class="flex-grow flex items-stretch">
+    <div class="w-full flex-grow flex items-stretch">
       <div v-for="question in challenge" :key="question.rightAlternative">
         <Question :question="question" :on-select="onSelect" />
       </div>
@@ -26,9 +26,10 @@ export default defineComponent({
     const challenge = ref<MultipleAnswerChallenge>([])
     challenge.value = await createMultipleChoiceChallenge(1)
 
-    const onSelect = (option: string, rightAlternative: string) => {
+    const onSelect = async (option: string, rightAlternative: string) => {
       if (option === rightAlternative) {
         alert(`Parabéns! A passagem é: ${rightAlternative}`)
+        challenge.value = await createMultipleChoiceChallenge(1)
       }
     }
 
