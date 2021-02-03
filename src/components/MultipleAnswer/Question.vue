@@ -2,13 +2,22 @@
   <div class="flex flex-col justify-between">
     <div class="w-full px-5 flex-grow flex flex-col justify-center">
       <div class="w-full h-auto flex flex-col flex-wrap text-center font-light">
-        <span v-if="context" class="select-none px-6 text-md mb-3 text-gray-100 w-full">
+        <span
+          v-if="context"
+          class="select-none px-6 text-md mb-3 text-gray-100 w-full"
+        >
           {{ question.title[0] }}
         </span>
-        <span v-on:click="toggleContext(true)" class="select-none text-xl mb-4 w-full text-gray-50">
+        <span
+          class="select-none text-xl mb-4 w-full text-gray-50"
+          @click="toggleContext(true)"
+        >
           {{ question.title[1] }}
         </span>
-        <span v-if="context" class="select-none px-6 text-md mb-5 text-gray-100 w-full">
+        <span
+          v-if="context"
+          class="select-none px-6 text-md mb-5 text-gray-100 w-full"
+        >
           {{ question.title[2] }}
         </span>
       </div>
@@ -46,15 +55,18 @@ export default defineComponent({
   },
   setup(props) {
     const context = ref(false)
-    const toggleContext = (value:boolean) => {
+    const toggleContext = (value: boolean) => {
       context.value = value
     }
 
-    watch(() => props.question.title[1], () => toggleContext(false))
+    watch(
+      () => props.question.title[1],
+      () => toggleContext(false)
+    )
 
     return {
       context,
-      toggleContext
+      toggleContext,
     }
   },
 })
