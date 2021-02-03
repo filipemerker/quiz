@@ -3,4 +3,5 @@ module.exports = {
   transform: {
     '^.+\\.vue$': 'vue-jest',
   },
+  collectCoverageFrom: ['src/**/*.{js,ts,vue}'],
 }

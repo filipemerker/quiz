@@ -1,11 +1,10 @@
 <template>
-  <div class="flex justify-center h-screen w-screen bg-gradient-to-t from-green-600 to-green-300">
+  <div
+    class="flex justify-center min-h-screen h-full w-screen bg-gradient-to-t from-green-600 to-green-300"
+  >
     <Suspense>
       <template #default>
         <Challenge />
-      </template>
-      <template #fallback>
-        <span>Loading... Please wait.</span>
       </template>
     </Suspense>
   </div>
@@ -13,7 +12,7 @@
 
 <script lang="ts">
 import { defineComponent, Suspense } from 'vue'
-import Challenge from '@/components/Challenge/Challenge.vue'
+import Challenge from '@/components/MultipleAnswer/Challenge.vue'
 
 export default defineComponent({
   name: 'App',

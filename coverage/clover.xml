@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1612361756181" clover="3.2.0">
+  <project timestamp="1612361756181" name="All files">
+    <metrics statements="101" coveredstatements="56" conditionals="8" coveredconditionals="4" methods="33" coveredmethods="18" elements="142" coveredelements="78" complexity="0" loc="101" ncloc="101" packages="6" files="11" classes="11"/>
+    <package name="src">
+      <metrics statements="20" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="0"/>
+      <file name="App.vue" path="/Users/fmerk/Desktop/Personal/quiz/src/App.vue">
+        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+      </file>
+      <file name="main.ts" path="/Users/fmerk/Desktop/Personal/quiz/src/main.ts">
+        <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+      </file>
+      <file name="registerServiceWorker.ts" path="/Users/fmerk/Desktop/Personal/quiz/src/registerServiceWorker.ts">
+        <metrics statements="10" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="5" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.api">
+      <metrics statements="39" coveredstatements="34" conditionals="4" coveredconditionals="4" methods="8" coveredmethods="8"/>
+      <file name="index.ts" path="/Users/fmerk/Desktop/Personal/quiz/src/api/index.ts">
+        <metrics statements="39" coveredstatements="34" conditionals="4" coveredconditionals="4" methods="8" coveredmethods="8"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="12" count="404" type="stmt"/>
+        <line num="13" count="808" type="stmt"/>
+        <line num="15" count="404" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="259" type="stmt"/>
+        <line num="23" count="259" type="stmt"/>
+        <line num="25" count="259" type="stmt"/>
+        <line num="26" count="3628" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="38" count="114" type="stmt"/>
+        <line num="39" count="114" type="stmt"/>
+        <line num="40" count="114" type="stmt"/>
+        <line num="41" count="114" type="stmt"/>
+        <line num="42" count="114" type="cond" truecount="2" falsecount="0"/>
+        <line num="43" count="5" type="stmt"/>
+        <line num="46" count="109" type="cond" truecount="2" falsecount="0"/>
+        <line num="47" count="4" type="stmt"/>
+        <line num="50" count="105" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="56" count="2" type="stmt"/>
+        <line num="57" count="145" type="stmt"/>
+        <line num="58" count="145" type="stmt"/>
+        <line num="60" count="3915" type="stmt"/>
+        <line num="62" count="0" type="stmt"/>
+        <line num="66" count="2" type="stmt"/>
+        <line num="67" count="144" type="stmt"/>
+        <line num="68" count="144" type="stmt"/>
+        <line num="69" count="144" type="stmt"/>
+        <line num="70" count="144" type="stmt"/>
+        <line num="71" count="144" type="stmt"/>
+        <line num="72" count="144" type="stmt"/>
+        <line num="73" count="144" type="stmt"/>
+        <line num="75" count="144" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.api.data">
+      <metrics statements="2" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="nvi-nt.ts" path="/Users/fmerk/Desktop/Personal/quiz/src/api/data/nvi-nt.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="2" type="stmt"/>
+      </file>
+      <file name="nvi.ts" path="/Users/fmerk/Desktop/Personal/quiz/src/api/data/nvi.ts">
+        <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.MultipleAnswer">
+      <metrics statements="17" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="0"/>
+      <file name="Challenge.vue" path="/Users/fmerk/Desktop/Personal/quiz/src/components/MultipleAnswer/Challenge.vue">
+        <metrics statements="10" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+      </file>
+      <file name="Question.vue" path="/Users/fmerk/Desktop/Personal/quiz/src/components/MultipleAnswer/Question.vue">
+        <metrics statements="7" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.helpers">
+      <metrics statements="21" coveredstatements="21" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10"/>
+      <file name="bible.ts" path="/Users/fmerk/Desktop/Personal/quiz/src/helpers/bible.ts">
+        <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="7"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="106" type="stmt"/>
+        <line num="7" count="481" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="12" count="44" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="11" type="stmt"/>
+        <line num="16" count="11" type="stmt"/>
+        <line num="17" count="11" type="stmt"/>
+        <line num="18" count="11" type="stmt"/>
+        <line num="20" count="33" type="stmt"/>
+        <line num="24" count="11" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="38" count="10" type="stmt"/>
+      </file>
+      <file name="index.ts" path="/Users/fmerk/Desktop/Personal/quiz/src/helpers/index.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="482" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="53" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.store">
+      <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="/Users/fmerk/Desktop/Personal/quiz/src/store/index.ts">
+        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
