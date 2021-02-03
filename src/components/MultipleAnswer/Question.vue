@@ -4,6 +4,7 @@
       <div class="w-full h-auto flex flex-col flex-wrap text-center font-light">
         <span
           v-if="context"
+          data-testid="question-title-before"
           class="select-none px-6 text-md mb-3 text-gray-100 w-full"
         >
           {{ question.title[0] }}
@@ -11,11 +12,13 @@
         <span
           class="select-none text-xl mb-4 w-full text-gray-50"
           @click="toggleContext(true)"
+          data-testid="question-title"
         >
           {{ question.title[1] }}
         </span>
         <span
           v-if="context"
+          data-testid="question-title-after"
           class="select-none px-6 text-md mb-5 text-gray-100 w-full"
         >
           {{ question.title[2] }}
@@ -23,12 +26,13 @@
       </div>
     </div>
     <div
-      class="shadow-sm w-full py-5 flex flex-wrap content-center justify-center"
+      id="alternatives" class="shadow-sm w-full py-5 flex flex-wrap content-center justify-center"
     >
       <button
         v-for="alternative in question.alternatives"
         :key="alternative"
-        class=" w-full mx-4 mb-3 h-12 shadow-lg bg-white text-gray-800 rounded-md px-2"
+        :class="`alternative w-full mx-4 mb-3 h-12 shadow-lg bg-white text-gray-800 rounded-md px-2`"
+        :data-testid="alternative"
         @click="onSelect(alternative, question.rightAlternative)"
       >
         {{ alternative }}

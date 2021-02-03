@@ -11,7 +11,9 @@ const routes: Array<RouteRecordRaw> = [
     path: '/multipla-escolha',
     name: 'MultipleAnswerChallenge',
     component: () =>
-      import(/* webpackChunkName: "about" */ '../views/MultipleAnswerChallenge.vue'),
+      import(
+        /* webpackChunkName: "about" */ '../views/MultipleAnswerChallenge.vue'
+      ),
   },
 ]
 

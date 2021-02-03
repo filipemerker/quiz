@@ -3,7 +3,8 @@ import {
   getBook,
   getBookTitles,
   getRandomReference,
-} from '../../../src/api'
+} from '@/api'
+import '@/api/data/nvi'
 
 describe('Helper - Api', () => {
   it('should get a Bible passage by reference', async () => {
