@@ -11,8 +11,8 @@
         </span>
         <span
           class="select-none text-xl mb-4 w-full text-gray-50"
-          @click="toggleContext(true)"
           data-testid="question-title"
+          @click="toggleContext(true)"
         >
           {{ question.title[1] }}
         </span>
@@ -26,12 +26,15 @@
       </div>
     </div>
     <div
-      id="alternatives" class="shadow-sm w-full py-5 flex flex-wrap content-center justify-center"
+      id="alternatives"
+      class="shadow-sm w-full py-5 flex flex-wrap content-center justify-center"
     >
       <button
         v-for="alternative in question.alternatives"
         :key="alternative"
-        :class="`alternative w-full mx-4 mb-3 h-12 shadow-lg bg-white text-gray-800 rounded-md px-2`"
+        :class="
+          `alternative w-full mx-4 mb-3 h-12 shadow-lg bg-white text-gray-800 rounded-md px-2`
+        "
         :data-testid="alternative"
         @click="onSelect(alternative, question.rightAlternative)"
       >

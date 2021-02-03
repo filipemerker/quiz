@@ -18,7 +18,7 @@ describe('Presentation - MultipleAnswer - Question', () => {
     const alternative = wrapper.get(`#alternatives .alternative`)
 
     await alternative.trigger('click')
-  
+
     expect(true).toBe(true)
   })
 })

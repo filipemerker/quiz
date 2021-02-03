@@ -1,9 +1,4 @@
-import {
-  getPassage,
-  getBook,
-  getBookTitles,
-  getRandomReference,
-} from '@/api'
+import { getPassage, getBook, getBookTitles, getRandomReference } from '@/api'
 import '@/api/data/nvi'
 
 describe('Helper - Api', () => {

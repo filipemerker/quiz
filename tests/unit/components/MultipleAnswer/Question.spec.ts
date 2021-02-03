@@ -9,11 +9,13 @@ describe('Presentation - MultipleAnswer - Question', () => {
     const onSelect = jest.fn()
     const wrapper = await mountSuspense(Question, {
       onSelect,
-      question
+      question,
     })
 
-    expect(wrapper.get('[data-testid="question-title"]').text()).toBe(question.title[1])
-    question.alternatives.map((alternative:string) => {
+    expect(wrapper.get('[data-testid="question-title"]').text()).toBe(
+      question.title[1]
+    )
+    question.alternatives.map((alternative: string) => {
       const query = `[data-testid="${alternative}"]`
 
       expect(wrapper.get(query)).not.toBeNull()
@@ -28,7 +30,7 @@ describe('Presentation - MultipleAnswer - Question', () => {
     const onSelect = jest.fn()
     const wrapper = await mountSuspense(Question, {
       onSelect,
-      question
+      question,
     })
 
     await wrapper.get('[data-testid="question-title"]').trigger('click')
@@ -45,11 +47,14 @@ describe('Presentation - MultipleAnswer - Question', () => {
     const onSelect = jest.fn()
     const wrapper = await mountSuspense(Question, {
       onSelect,
-      question
+      question,
     })
 
     await wrapper.get(`[data-testid="${alternative}"]`).trigger('click')
 
-    expect(onSelect).toHaveBeenCalledWith(alternative, question.rightAlternative)
+    expect(onSelect).toHaveBeenCalledWith(
+      alternative,
+      question.rightAlternative
+    )
   })
 })
