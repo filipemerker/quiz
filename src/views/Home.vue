@@ -54,3 +54,9 @@
     </div>
   </div>
 </template>
+
+<style lang="postcss" scoped>
+.card {
+  max-width: calc(50vw - 30px);
+}
+</style>
