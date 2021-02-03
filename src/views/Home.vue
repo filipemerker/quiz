@@ -11,13 +11,13 @@
       </h1>
       <h2
         data-testid="sub-title"
-        class="text-gray-50 text-4xl font-bold text-left w-full mt-2"
+        class="text-gray-50 text-4xl font-bold text-left w-full mt-2 leading-9"
       >
         Aumente seu conhecimento bíblico
       </h2>
       <h2
         data-testid="description-title"
-        class="text-gray-50 text-lg font-bold text-left w-full mt-4"
+        class="text-gray-50 text-lg font-semibold text-left w-full mt-4 leading-6"
       >
         Memorize textos e eventos bíblicos que irão edificar profundamente sua
         vida.
@@ -26,12 +26,12 @@
     <div class="w-screen max-w-full overflow-hidden mt-5">
       <h2
         data-testid="description-title"
-        class="text-gray-50 text-lg font-bold text-left ml-4"
+        class="text-gray-50 text-lg font-semibold text-left ml-4"
       >
         Confira os desafios disponíveis:
       </h2>
       <div
-        class="w-full overflow-auto whitespace-nowrap flex flex-row pb-4 pl-4 mt-4"
+        class="w-full overflow-auto whitespace-nowrap flex flex-row pb-4 pl-4 mt-2"
       >
         <router-link to="/multipla-escolha">
           <div
