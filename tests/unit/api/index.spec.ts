@@ -1,9 +1,5 @@
-import {
-  getPassage,
-  getBook,
-  getBookTitles,
-  getRandomReference,
-} from '../../../src/api'
+import { getPassage, getBook, getBookTitles, getRandomReference } from '@/api'
+import '@/api/data/nvi'
 
 describe('Helper - Api', () => {
   it('should get a Bible passage by reference', async () => {
