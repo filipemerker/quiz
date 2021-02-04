@@ -4,12 +4,7 @@
   >
     <router-view v-slot="{ Component }">
       <transition
-        enter-active-class="transition-all duration-600 ease-in-out"
-        leave-active-class="transition-all duration-100 ease-in-out"
-        enter-class="opacity-0"
-        enter-to-class="opacity-100"
-        leave-class="opacity-100"
-        leave-to-class="opacity-0"
+        :duration="{ enter: 500, leave: 800 }"
         name="fade"
         mode="out-in"
       >

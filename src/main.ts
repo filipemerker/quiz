@@ -4,6 +4,7 @@ import './registerServiceWorker'
 import store from './store'
 
 import './assets/css/tailwind.css'
+import './assets/css/gradients.css'
 import router from './router'
 
 createApp(App)
