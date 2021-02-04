@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-center min-h-screen h-full w-screen bg-gradient-to-t from-green-600 to-green-300"
+    class="flex justify-center min-h-screen h-full w-screen bg-gradient-to-t from-indigo-900 to-purple-500"
   >
     <router-view />
   </div>
