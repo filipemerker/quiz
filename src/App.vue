@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-center min-h-screen h-full w-screen bg-gradient-to-t from-indigo-900 to-purple-500"
+    class="flex justify-center min-h-screen h-full w-screen bg-gradient-to-t from-gray-100 to-gray-50"
   >
     <router-view />
   </div>
@@ -12,19 +12,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+  color: rgb(40 38 75);
 }
 </style>
