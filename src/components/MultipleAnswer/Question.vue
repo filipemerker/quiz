@@ -5,12 +5,12 @@
         <span
           v-if="context"
           data-testid="question-title-before"
-          class="select-none px-6 text-md mb-3 text-gray-100 w-full"
+          class="select-none px-6 text-md mb-3 text-indigo-700 w-full"
         >
           {{ question.title[0] }}
         </span>
         <span
-          class="select-none text-xl mb-4 w-full text-gray-50"
+          class="select-none text-xl mb-4 w-full text-indigo-800"
           data-testid="question-title"
           @click="toggleContext(true)"
         >
@@ -19,7 +19,7 @@
         <span
           v-if="context"
           data-testid="question-title-after"
-          class="select-none px-6 text-md mb-5 text-gray-100 w-full"
+          class="select-none px-6 text-md mb-5 text-indigo-700 w-full"
         >
           {{ question.title[2] }}
         </span>
