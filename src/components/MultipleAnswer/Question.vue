@@ -33,7 +33,7 @@
         v-for="alternative in question.alternatives"
         :key="alternative"
         :class="
-          `alternative w-full mx-4 mb-3 h-12 shadow-lg bg-white text-gray-800 rounded-md px-2`
+          `alternative w-full mx-4 mb-3 h-12 shadow-md font-bold text-sm text-white rounded-md bg-white bg-opacity-30 px-2`
         "
         :data-testid="alternative"
         @click="onSelect(alternative, question.rightAlternative)"
