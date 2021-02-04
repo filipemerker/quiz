@@ -3,7 +3,7 @@ import App from './App.vue'
 import './registerServiceWorker'
 import store from './store'
 
-import './assets/tailwind.css'
+import './assets/css/tailwind.css'
 import router from './router'
 
 createApp(App)

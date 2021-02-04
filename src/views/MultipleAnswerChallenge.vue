@@ -1,9 +1,11 @@
 <template>
-  <Suspense>
-    <template #default>
-      <Challenge />
-    </template>
-  </Suspense>
+  <div id="asd" key="Challenge" class="w-screen h-screen flex">
+    <Suspense>
+      <template #default>
+        <Challenge />
+      </template>
+    </Suspense>
+  </div>
 </template>
 
 <script lang="ts">
