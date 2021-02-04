@@ -1,12 +1,14 @@
 <template>
   <div class="flex flex-col min-h-screen h-full w-full max-w-md">
-    <header class="w-full py-5 flex flex-wrap content-center justify-center">
-      <h1
-        data-testid="title"
-        class="text-indigo-800 text-2xl font-bold text-center"
-      >
-        Desafio do Novo Testamento
-      </h1>
+    <header
+      class="w-full py-5 px-4 flex flex-wrap content-center justify-center"
+    >
+      <div class="timer w-full h-1 bg-gray-300 rounded-full ">
+        <div
+          :style="{ width: `${percentile}%` }"
+          class="h-full max-w-full rounded-full gradient-1 transition-all ease-in-out"
+        ></div>
+      </div>
     </header>
     <div v-if="question" class="w-full flex-grow flex items-stretch">
       <Question
@@ -21,6 +23,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { useTimer } from '@/helpers/hooks'
 import Question from '@/components/MultipleAnswer/Question.vue'
 import { createMultipleChoiceQuestion } from '@/helpers/bible'
 import { MultipleAnswerQuestion } from '@/types/Quiz'
@@ -31,11 +34,14 @@ export default defineComponent({
   async setup() {
     const { push } = useRouter()
     const question = ref<MultipleAnswerQuestion | null>(null)
+    const { percentile, reset, kill } = useTimer(15000)
+
     question.value = await createMultipleChoiceQuestion()
 
     const onSelect = async (option: string, rightAlternative: string) => {
       if (option === rightAlternative) {
         question.value = await createMultipleChoiceQuestion()
+        reset()
       } else {
         push('/')
       }
@@ -45,6 +51,7 @@ export default defineComponent({
       Question,
       question,
       onSelect,
+      percentile,
     }
   },
 })
