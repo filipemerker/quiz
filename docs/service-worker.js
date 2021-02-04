@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/quiz/precache-manifest.3e38f2f45eceb3c4074570e4900cc12b.js"
+  "/precache-manifest.4acde53280f54ece28584592021db18a.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "template"});
