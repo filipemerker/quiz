@@ -26,7 +26,7 @@
     <div class="w-screen max-w-full overflow-hidden mt-7">
       <h2
         data-testid="description-title"
-        class="text-gray-50 text-lg font-light text-left ml-4"
+        class="text-gray-50 text-lg font-light leading-6 text-left ml-4"
       >
         Confira os desafios disponíveis:
       </h2>
