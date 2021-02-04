@@ -34,7 +34,7 @@
         <router-link
           v-for="(game, index) in games"
           :key="game"
-          class="card-link"
+          class="card-link outline-none"
           :to="game.route"
         >
           <div
@@ -106,5 +106,14 @@ export default defineComponent({
   width: calc(50vw - 3rem);
   max-width: 10rem;
   min-width: 8rem;
+}
+.card-link {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 </style>
