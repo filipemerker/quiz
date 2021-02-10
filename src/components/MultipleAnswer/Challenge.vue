@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col min-h-screen h-full w-full max-w-md">
+  <div class="flex flex-col min-h-screen-inner h-full w-full max-w-md">
     <header
       class="w-full py-5 px-4 flex flex-wrap content-center justify-center"
     >
@@ -8,6 +8,7 @@
           :style="{ width: `${percentile}%` }"
           class="h-full max-w-full rounded-full gradient-1 transition-all ease-in-out"
         ></div>
+        <div>{{display}}</div>
       </div>
     </header>
     <div v-if="question" class="w-full flex-grow flex items-stretch">
@@ -23,7 +24,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { useTimer } from '@/helpers/hooks'
+import { Clock } from '@/helpers/hooks'
 import Question from '@/components/MultipleAnswer/Question.vue'
 import { createMultipleChoiceQuestion } from '@/helpers/bible'
 import { MultipleAnswerQuestion } from '@/types/Quiz'
@@ -34,7 +35,12 @@ export default defineComponent({
   async setup() {
     const { push } = useRouter()
     const question = ref<MultipleAnswerQuestion | null>(null)
-    const { percentile, reset, kill } = useTimer(15000)
+    const onWrongAnswer = () => push('/')
+    const { percentile, display, reset } = new Clock({
+      max: 20000,
+      step: 10,
+      onFinish: () => onWrongAnswer(),
+    })
 
     question.value = await createMultipleChoiceQuestion()
 
@@ -43,7 +49,7 @@ export default defineComponent({
         question.value = await createMultipleChoiceQuestion()
         reset()
       } else {
-        push('/')
+        onWrongAnswer()
       }
     }
 
@@ -52,6 +58,7 @@ export default defineComponent({
       question,
       onSelect,
       percentile,
+      display
     }
   },
 })

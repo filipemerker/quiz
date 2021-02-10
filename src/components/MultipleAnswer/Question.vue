@@ -29,7 +29,7 @@
     </div>
     <div
       id="alternatives"
-      class=" bg-gray-200 shadow-inner w-full p-5 flex flex-wrap content-center justify-between "
+      class=" bg-gray-200 shadow-inner w-full p-5 flex flex-wrap content-center justify-between sm:rounded-md sm:mb-5"
     >
       <button
         v-for="alternative in question.alternatives"
