@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-center min-h-screen h-full w-screen bg-gradient-to-t from-gray-100 to-gray-50"
+    class="flex justify-center min-h-screen-inner h-full w-screen bg-gradient-to-t from-gray-100 to-gray-50"
   >
     <router-view v-slot="{ Component }">
       <transition
