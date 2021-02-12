@@ -1,7 +1,7 @@
 <template>
   <div
     key="Home"
-    class="flex flex-col min-h-screen h-full w-full max-w-md content-center justify-center"
+    class="flex flex-col min-h-screen-inner h-full w-full max-w-md content-center justify-center"
   >
     <header class="flex flex-wrap pb-4 px-4">
       <h1 data-testid="title" class="text-xl font-bold text-left w-full italic">
@@ -84,13 +84,13 @@ export default defineComponent({
         title: 'Antigo Testamento',
         subtitle: 'Em breve',
         route: '/',
-        active: false,
+        active: true,
       },
       {
         title: 'Perguntas Bíblicas',
         subtitle: 'Em breve',
         route: '/',
-        active: false,
+        active: true,
       },
     ])
 

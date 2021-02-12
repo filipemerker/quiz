@@ -1,5 +1,5 @@
 <template>
-  <div key="Challenge" class="w-screen h-screen flex justify-center">
+  <div key="Challenge" class="w-screen min-h-screen-inner flex justify-center">
     <Suspense>
       <template #default>
         <Challenge />

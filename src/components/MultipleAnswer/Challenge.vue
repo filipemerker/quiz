@@ -1,16 +1,8 @@
 <template>
-  <div class="flex flex-col min-h-screen-inner h-full w-full max-w-md">
-    <header
-      class="w-full py-5 px-4 flex flex-wrap content-center justify-center"
-    >
-      <div class="timer w-full h-1 bg-gray-300 rounded-full ">
-        <div
-          :style="{ width: `${percentile}%` }"
-          class="h-full max-w-full rounded-full gradient-1 transition-all ease-in-out"
-        ></div>
-        <div>{{display}}</div>
-      </div>
-    </header>
+  <div
+    class="flex flex-col min-h-screen-inner h-full w-full max-w-md gradient-3"
+  >
+    <timer :percentile="percentile" :display="display" :points="points" />
     <div v-if="question" class="w-full flex-grow flex items-stretch">
       <Question
         data-testid="question"
@@ -24,21 +16,23 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { Clock } from '@/helpers/hooks'
+import { Clock } from '@/helpers/Clock'
 import Question from '@/components/MultipleAnswer/Question.vue'
+import Timer from '@/components/Timer/Timer.vue'
 import { createMultipleChoiceQuestion } from '@/helpers/bible'
 import { MultipleAnswerQuestion } from '@/types/Quiz'
 
 export default defineComponent({
   name: 'Challenge',
-  components: { Question },
+  components: { Question, Timer },
   async setup() {
-    const { push } = useRouter()
+    const points = ref<number>(0)
     const question = ref<MultipleAnswerQuestion | null>(null)
+    const { push } = useRouter()
     const onWrongAnswer = () => push('/')
     const { percentile, display, reset } = new Clock({
       max: 20000,
-      step: 10,
+      step: 100,
       onFinish: () => onWrongAnswer(),
     })
 
@@ -47,6 +41,7 @@ export default defineComponent({
     const onSelect = async (option: string, rightAlternative: string) => {
       if (option === rightAlternative) {
         question.value = await createMultipleChoiceQuestion()
+        points.value += 100
         reset()
       } else {
         onWrongAnswer()
@@ -58,7 +53,8 @@ export default defineComponent({
       question,
       onSelect,
       percentile,
-      display
+      display,
+      points,
     }
   },
 })
