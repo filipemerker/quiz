@@ -84,13 +84,13 @@ export default defineComponent({
         title: 'Antigo Testamento',
         subtitle: 'Em breve',
         route: '/',
-        active: true,
+        active: false,
       },
       {
         title: 'Perguntas Bíblicas',
         subtitle: 'Em breve',
         route: '/',
-        active: true,
+        active: false,
       },
     ])
 

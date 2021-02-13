@@ -27,7 +27,7 @@
     </div>
     <div
       id="alternatives"
-      class="   p-5 flex flex-wrap content-center justify-between rounded-md"
+      class="p-5 flex flex-wrap content-center justify-between rounded-md"
     >
       <button
         v-for="alternative in question.alternatives"
