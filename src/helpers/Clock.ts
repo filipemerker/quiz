@@ -5,10 +5,7 @@ const setGlobalInterval = (cb: () => void, step = 100) => {
     clearInterval(window.clock)
   }
 
-  return (window.clock = setInterval(() => {
-    console.log('Running!')
-    cb()
-  }, step))
+  return (window.clock = setInterval(() => cb(), step))
 }
 type Interval = number | undefined
 
@@ -17,6 +14,7 @@ export class Clock {
   private clock: Interval
   private max: number
   private step: number
+  public running: Ref<boolean>
   public time: Ref<number>
   public percentile: Ref<number>
   public display: Ref<string>
@@ -35,7 +33,8 @@ export class Clock {
     this.max = max
     this.step = step
     this.onFinish = onFinish
-
+    
+    this.running = ref(true)
     this.time = ref(0)
     this.percentile = ref(0)
     this.display = ref(this.getDisplay())
@@ -74,5 +73,16 @@ export class Clock {
     clearInterval(this.clock)
     this.time.value = 0
     this.percentile.value = 0
+  }
+
+  public stop = () => {
+    clearInterval(this.clock)
+    this.running.value = false
+  }
+
+  public resume = () => {
+    clearInterval(this.clock)
+    this.clock = setGlobalInterval(this.onInterval, this.step)
+    this.running.value = true
   }
 }

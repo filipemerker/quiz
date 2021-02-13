@@ -3,11 +3,14 @@
     class="w-full py-5 px-4 flex flex-wrap items-center justify-center flex-row"
   >
     <div
-      class="bg-gray-50 leading-4 italic shadow-lg bg-opacity-20 text-white font-bold rounded-full w-20 h-20 flex items-center justify-center transition-all ease-in-out"
+      class=" relative leading-4 italic shadow-lg rounded-full text-white font-bold  w-20 h-20"
     >
-      {{ points }}
-      <br />
-      pontos
+    <div :key="points" id="points-bg" class="animate-ping w-full h-full bg-green-400 absolute rounded-full"></div>
+    <div id="points" class="bg-gray-50 w-full h-full rounded-full z-10 relative flex items-center justify-center">
+        {{ points }}
+        <br />
+        pontos
+    </div>
     </div>
     <div class="timer flex-1 h-3 bg-gray-100 bg-opacity-20 rounded-full mx-4">
       <div
@@ -38,14 +41,21 @@ export default defineComponent({
       required: true,
     },
     display: {
-      type: Number,
+      type: String,
       required: true,
     },
     points: {
       type: Number,
       required: true,
-    },
+    }
   },
 })
 </script>
-<style></style>
+<style>
+  #points {
+    background: #aed0fd;
+  }
+  #points-bg {
+    animation-iteration-count: 1;
+  }
+</style>

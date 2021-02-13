@@ -30,7 +30,7 @@ export default defineComponent({
     const question = ref<MultipleAnswerQuestion | null>(null)
     const { push } = useRouter()
     const onWrongAnswer = () => push('/')
-    const { percentile, display, reset } = new Clock({
+    const { percentile, display, reset, running, stop, resume } = new Clock({
       max: 20000,
       step: 100,
       onFinish: () => onWrongAnswer(),
@@ -38,14 +38,19 @@ export default defineComponent({
 
     question.value = await createMultipleChoiceQuestion()
 
-    const onSelect = async (option: string, rightAlternative: string) => {
+    const onSelect = (option: string, rightAlternative: string) => {
       if (option === rightAlternative) {
-        question.value = await createMultipleChoiceQuestion()
-        points.value += 100
-        reset()
-      } else {
-        onWrongAnswer()
-      }
+        stop()
+
+        setTimeout(async () => {
+          question.value = await createMultipleChoiceQuestion()
+          points.value += 100
+          reset()
+          resume()
+        }, 1000)
+     } else {
+      onWrongAnswer()
+    }
     }
 
     return {
