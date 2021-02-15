@@ -33,7 +33,7 @@ export class Clock {
     this.max = max
     this.step = step
     this.onFinish = onFinish
-    
+
     this.running = ref(true)
     this.time = ref(0)
     this.percentile = ref(0)

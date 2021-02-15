@@ -2,7 +2,12 @@
   <div
     class="flex flex-col min-h-screen-inner h-full w-full max-w-md gradient-3"
   >
-    <timer :percentile="percentile" :display="display" :points="points" />
+    <timer
+      :percentile="percentile"
+      :display="display"
+      :points="points"
+      :current-lives="currentLives"
+    />
     <div v-if="question" class="w-full flex-grow flex items-stretch">
       <Question
         data-testid="question"
@@ -26,10 +31,17 @@ export default defineComponent({
   name: 'Challenge',
   components: { Question, Timer },
   async setup() {
+    const currentLives = ref<number>(5)
     const points = ref<number>(0)
     const question = ref<MultipleAnswerQuestion | null>(null)
     const { push } = useRouter()
-    const onWrongAnswer = () => push('/')
+    const onWrongAnswer = () => {
+      currentLives.value -= 1
+
+      if (currentLives.value < 1) {
+        push('/')
+      }
+    }
     const { percentile, display, reset, running, stop, resume } = new Clock({
       max: 20000,
       step: 100,
@@ -39,18 +51,18 @@ export default defineComponent({
     question.value = await createMultipleChoiceQuestion()
 
     const onSelect = (option: string, rightAlternative: string) => {
-      if (option === rightAlternative) {
-        stop()
+      stop()
 
-        setTimeout(async () => {
+      setTimeout(async () => {
+        if (option === rightAlternative) {
           question.value = await createMultipleChoiceQuestion()
           points.value += 100
           reset()
           resume()
-        }, 1000)
-     } else {
-      onWrongAnswer()
-    }
+        } else {
+          onWrongAnswer()
+        }
+      }, 1000)
     }
 
     return {
@@ -60,6 +72,7 @@ export default defineComponent({
       percentile,
       display,
       points,
+      currentLives,
     }
   },
 })
