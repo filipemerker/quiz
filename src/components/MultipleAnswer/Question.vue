@@ -33,7 +33,15 @@
         v-for="alternative in question.alternatives"
         :key="alternative"
         :class="
-          `alternative my-2 h-12 shadow-lg font-semibold text-sm text-gray-100 bg-gray-100 bg-opacity-30 rounded-md px-2`
+          `${
+            showResults
+              && alternative === question.rightAlternative
+              && `border-green-300 border-opacity-70 border-2 border-t-8`
+          } ${
+            showResults
+              && alternative !== question.rightAlternative
+              && `border-red-400 border-opacity-70 border-2 border-t-8`
+          } alternative my-2 h-12 shadow-lg font-semibold text-sm text-gray-100 bg-gray-100 bg-opacity-30 rounded-md px-2`
         "
         :data-testid="alternative"
         @click="onSelect(alternative, question.rightAlternative)"
@@ -74,6 +82,7 @@ export default defineComponent({
     return {
       context,
       toggleContext,
+      showResults: true
     }
   },
 })

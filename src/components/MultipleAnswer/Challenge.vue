@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { Clock } from '@/helpers/Clock'
 import Question from '@/components/MultipleAnswer/Question.vue'
@@ -31,10 +31,18 @@ export default defineComponent({
   name: 'Challenge',
   components: { Question, Timer },
   async setup() {
+    const { push } = useRouter()
     const currentLives = ref<number>(5)
     const points = ref<number>(0)
     const question = ref<MultipleAnswerQuestion | null>(null)
-    const { push } = useRouter()
+
+    const getNewQuestion = async ():Promise<void> => {
+      question.value = await createMultipleChoiceQuestion()
+    }
+    
+    const onRightAnswer = ( ) => {
+      points.value += 100
+    }
     const onWrongAnswer = () => {
       currentLives.value -= 1
 
@@ -42,26 +50,33 @@ export default defineComponent({
         push('/')
       }
     }
-    const { percentile, display, reset, running, stop, resume } = new Clock({
-      max: 20000,
+    const clock = new Clock({
+      max: 200000,
       step: 100,
-      onFinish: () => onWrongAnswer(),
+      onStart: async () => {
+        await getNewQuestion()
+      },
+      onFinish: async () => {
+        onWrongAnswer()
+        await getNewQuestion()
+        clock.reset()
+        clock.resume()
+      }
     })
 
-    question.value = await createMultipleChoiceQuestion()
-
     const onSelect = (option: string, rightAlternative: string) => {
-      stop()
+      clock.stop()
 
       setTimeout(async () => {
         if (option === rightAlternative) {
-          question.value = await createMultipleChoiceQuestion()
-          points.value += 100
-          reset()
-          resume()
+          onRightAnswer()
         } else {
           onWrongAnswer()
         }
+
+        await getNewQuestion()
+        clock.reset()
+        clock.resume()
       }, 1000)
     }
 
@@ -69,8 +84,8 @@ export default defineComponent({
       Question,
       question,
       onSelect,
-      percentile,
-      display,
+      percentile: clock.percentile,
+      display: clock.display,
       points,
       currentLives,
     }
