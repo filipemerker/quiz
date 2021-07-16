@@ -1,13 +1,19 @@
 <template>
   <div
-    class="flex flex-col min-h-screen-inner h-full w-full max-w-md gradient-3"
+    class="flex flex-col min-h-screen-inner h-full w-full max-w-md"
   >
-    <timer :percentile="percentile" :display="display" :points="points" />
+    <timer
+      :percentile="percentile"
+      :display="display"
+      :points="points"
+      :current-lives="currentLives"
+    />
     <div v-if="question" class="w-full flex-grow flex items-stretch">
       <Question
         data-testid="question"
         :question="question"
         :on-select="onSelect"
+        :showResults="showResults"
       />
     </div>
   </div>
@@ -26,40 +32,67 @@ export default defineComponent({
   name: 'Challenge',
   components: { Question, Timer },
   async setup() {
-    const points = ref<number>(0)
-    const question = ref<MultipleAnswerQuestion | null>(null)
     const { push } = useRouter()
-    const onWrongAnswer = () => push('/')
-    const { percentile, display, reset, running, stop, resume } = new Clock({
+    const currentLives = ref<number>(5)
+    const points = ref<number>(0)
+    const showResults = ref<boolean>(false)
+    const question = ref<MultipleAnswerQuestion | null>(null)
+
+    const getNewQuestion = async ():Promise<void> => {
+      question.value = await createMultipleChoiceQuestion()
+    }
+    
+    const onRightAnswer = ( ) => {
+      points.value += 100
+    }
+    const onWrongAnswer = () => {
+      currentLives.value -= 1
+
+      if (currentLives.value < 1) {
+        push('/')
+      }
+    }
+    const clock = new Clock({
       max: 20000,
       step: 100,
-      onFinish: () => onWrongAnswer(),
+      onStart: async () => {
+        await getNewQuestion()
+      },
+      onFinish: async () => {
+        onWrongAnswer()
+        await getNewQuestion()
+        clock.reset()
+        clock.resume()
+      }
     })
 
-    question.value = await createMultipleChoiceQuestion()
-
     const onSelect = (option: string, rightAlternative: string) => {
-      if (option === rightAlternative) {
-        stop()
+      clock.stop()
+      showResults.value = true
 
-        setTimeout(async () => {
-          question.value = await createMultipleChoiceQuestion()
-          points.value += 100
-          reset()
-          resume()
-        }, 1000)
-     } else {
-      onWrongAnswer()
-    }
+      setTimeout(async () => {
+        if (option === rightAlternative) {
+          onRightAnswer()
+        } else {
+          onWrongAnswer()
+        }
+
+        await getNewQuestion()
+        showResults.value = false
+        clock.reset()
+        clock.resume()
+      }, 2500)
     }
 
     return {
       Question,
       question,
       onSelect,
-      percentile,
-      display,
+      percentile: clock.percentile,
+      display: clock.display,
       points,
+      currentLives,
+      showResults
     }
   },
 })

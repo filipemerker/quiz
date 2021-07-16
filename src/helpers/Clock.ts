@@ -23,21 +23,25 @@ export class Clock {
     max = 20000,
     step = 100,
     onFinish,
+    onStart,
   }: {
     max?: number
     step: number
-    onFinish: () => void
+    onFinish: () => void,
+    onStart: () => void,
   }) {
     this.clock = setGlobalInterval(this.onInterval, step)
 
     this.max = max
     this.step = step
     this.onFinish = onFinish
-    
+
     this.running = ref(true)
     this.time = ref(0)
     this.percentile = ref(0)
     this.display = ref(this.getDisplay())
+
+    Promise.resolve(onStart())
   }
 
   private hasReachedMax = () => this.time.value >= this.max
