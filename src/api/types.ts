@@ -12,3 +12,16 @@ export type PassageReference = {
   chapter: number
   verse: number
 }
+
+export interface Option {
+  title: string
+}
+export interface CorrectOption extends Option {
+  correct: boolean
+}
+export interface Question {
+  title: string
+  options: [CorrectOption, Option, Option, Option]
+}
+
+export type Questions = Question[]

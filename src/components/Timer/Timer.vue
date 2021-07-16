@@ -22,7 +22,7 @@
       </div>
       <div class="flex flex-col flex-1 items-end pl-5 mt-3">
         <div
-          class="timer flex-1 flex-grow w-full h-3 bg-gray-100 bg-opacity-20 rounded-full ml-4"
+          class="timer w-full h-3 bg-gray-100 bg-opacity-20 rounded-full ml-4 overflow-hidden mb-3"
         >
           <div
             :style="{ width: `${percentile}%` }"
@@ -33,20 +33,22 @@
             "
           ></div>
         </div>
-        <div
-          class="bg-gray-50 bg-opacity-20 text-white font-bold text-xs rounded-full w-7 h-7 mt-3 flex items-center justify-center"
-        >
-          {{ display }}
+        <div class="w-full flex flex-row justify-between items-center">
+          <div id="lives" class="flex flex-row">
+            <div
+              v-for="live in lives"
+              :key="live"
+              class="bg-gray-50 bg-opacity-20 w-6 h-6 rounded-full items-center justify-center flex mr-2"
+            >
+              <heart id="heart"></heart>
+            </div>
+          </div>
+          <div
+            class="bg-gray-50 bg-opacity-20 text-white font-bold text-xs rounded-full w-7 h-7 flex items-center justify-center"
+          >
+            {{ display }}
+          </div>
         </div>
-      </div>
-    </div>
-    <div id="lives" class="w-full pl-32 relative flex flex-row">
-      <div
-        v-for="live in lives"
-        :key="live"
-        class="bg-gray-50 bg-opacity-20 w-6 h-6 rounded-full items-center justify-center flex mr-2"
-      >
-        <heart id="heart"></heart>
       </div>
     </div>
   </header>
@@ -95,10 +97,7 @@ export default defineComponent({
 #points-bg {
   animation-iteration-count: 1;
 }
-#lives {
-  top: -55px;
-  left: -15px;
-}
+
 #heart {
   width: 50%;
   height: 50%;

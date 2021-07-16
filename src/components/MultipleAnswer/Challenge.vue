@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col min-h-screen-inner h-full w-full max-w-md gradient-3"
+    class="flex flex-col min-h-screen-inner h-full w-full max-w-md"
   >
     <timer
       :percentile="percentile"
@@ -13,13 +13,14 @@
         data-testid="question"
         :question="question"
         :on-select="onSelect"
+        :showResults="showResults"
       />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from 'vue'
+import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { Clock } from '@/helpers/Clock'
 import Question from '@/components/MultipleAnswer/Question.vue'
@@ -34,6 +35,7 @@ export default defineComponent({
     const { push } = useRouter()
     const currentLives = ref<number>(5)
     const points = ref<number>(0)
+    const showResults = ref<boolean>(false)
     const question = ref<MultipleAnswerQuestion | null>(null)
 
     const getNewQuestion = async ():Promise<void> => {
@@ -51,7 +53,7 @@ export default defineComponent({
       }
     }
     const clock = new Clock({
-      max: 200000,
+      max: 20000,
       step: 100,
       onStart: async () => {
         await getNewQuestion()
@@ -66,6 +68,7 @@ export default defineComponent({
 
     const onSelect = (option: string, rightAlternative: string) => {
       clock.stop()
+      showResults.value = true
 
       setTimeout(async () => {
         if (option === rightAlternative) {
@@ -75,9 +78,10 @@ export default defineComponent({
         }
 
         await getNewQuestion()
+        showResults.value = false
         clock.reset()
         clock.resume()
-      }, 1000)
+      }, 2500)
     }
 
     return {
@@ -88,6 +92,7 @@ export default defineComponent({
       display: clock.display,
       points,
       currentLives,
+      showResults
     }
   },
 })
