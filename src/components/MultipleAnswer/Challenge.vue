@@ -1,7 +1,8 @@
 <template>
   <div
-    class="flex flex-col min-h-screen-inner h-full w-full max-w-md"
+    class="flex relative flex-col min-h-screen-inner h-full w-full max-w-md"
   >
+    <!--<Achievement :icon="'🏅'" />-->
     <timer
       :percentile="percentile"
       :display="display"
@@ -53,7 +54,7 @@ export default defineComponent({
       }
     }
     const clock = new Clock({
-      max: 20000,
+      max: 200000,
       step: 100,
       onStart: async () => {
         await getNewQuestion()
