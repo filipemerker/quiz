@@ -1,7 +1,5 @@
 <template>
-  <div
-    class="flex relative flex-col min-h-screen-inner h-full w-full max-w-md"
-  >
+  <div class="flex relative flex-col min-h-screen-inner h-full w-full max-w-md">
     <!--<Achievement :icon="'🏅'" />-->
     <timer
       :percentile="percentile"
@@ -14,7 +12,7 @@
         data-testid="question"
         :question="question"
         :on-select="onSelect"
-        :showResults="showResults"
+        :show-results="showResults"
       />
     </div>
   </div>
@@ -39,11 +37,11 @@ export default defineComponent({
     const showResults = ref<boolean>(false)
     const question = ref<MultipleAnswerQuestion | null>(null)
 
-    const getNewQuestion = async ():Promise<void> => {
+    const getNewQuestion = async (): Promise<void> => {
       question.value = await createMultipleChoiceQuestion()
     }
-    
-    const onRightAnswer = ( ) => {
+
+    const onRightAnswer = () => {
       points.value += 100
     }
     const onWrongAnswer = () => {
@@ -64,7 +62,7 @@ export default defineComponent({
         await getNewQuestion()
         clock.reset()
         clock.resume()
-      }
+      },
     })
 
     const onSelect = (option: string, rightAlternative: string) => {
@@ -93,7 +91,7 @@ export default defineComponent({
       display: clock.display,
       points,
       currentLives,
-      showResults
+      showResults,
     }
   },
 })
