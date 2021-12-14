@@ -52,7 +52,7 @@ export default defineComponent({
       }
     }
     const clock = new Clock({
-      max: 200000,
+      max: 30000,
       step: 100,
       onStart: async () => {
         await getNewQuestion()

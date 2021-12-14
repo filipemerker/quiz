@@ -27,8 +27,8 @@ export class Clock {
   }: {
     max?: number
     step: number
-    onFinish: () => void,
-    onStart: () => void,
+    onFinish: () => void
+    onStart: () => void
   }) {
     this.clock = setGlobalInterval(this.onInterval, step)
 

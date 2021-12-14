@@ -1,54 +1,32 @@
 <template>
-  <header class="w-full flex flex-wrap flex-col">
+  <header
+    id="header"
+    class="w-full flex flex-wrap flex-col text-gray-100 font-bold"
+  >
     <div
-      class="w-full py-5 px-4 flex flex-wrap items-center justify-center flex-row"
+      class="w-full py-3 px-4 mt-6 flex flex-wrap items-center justify-between flex-row relative"
     >
       <div
-        class=" relative leading-4 italic shadow-lg rounded-full text-white font-bold  w-20 h-20"
+        id="points"
+        class="relative leading-4 italic rounded-full w-auto h-10 px-3"
       >
         <div
-          id="points-bg"
-          :key="points"
-          class="animate-ping w-full h-full bg-green-400 absolute rounded-full"
-        ></div>
-        <div
-          id="points"
-          class="bg-gray-50 w-full h-full rounded-full z-10 relative flex items-center justify-center"
+          class="w-full h-full rounded-full z-10 relative flex items-center justify-center"
         >
           {{ points }}
-          <br />
-          pontos
+          xp
         </div>
       </div>
-      <div class="flex flex-col flex-1 items-end pl-5 mt-3">
-        <div
-          class="timer w-full h-3 bg-gray-100 bg-opacity-20 rounded-full ml-4 overflow-hidden mb-3"
-        >
-          <div
-            :style="{ width: `${percentile}%` }"
-            :class="
-              `${
-                percentile < 60 ? `bg-green-300` : `bg-red-400`
-              } bg-opacity-70 h-full max-w-full rounded-full shadow-lg transition-all ease-in-out`
-            "
-          ></div>
-        </div>
-        <div class="w-full flex flex-row justify-between items-center">
-          <div id="lives" class="flex flex-row">
-            <div
-              v-for="live in lives"
-              :key="live"
-              class="bg-gray-50 bg-opacity-20 w-6 h-6 rounded-full items-center justify-center flex mr-2"
-            >
-              <heart id="heart"></heart>
-            </div>
-          </div>
-          <div
-            class="bg-gray-50 bg-opacity-20 text-white font-bold text-xs rounded-full w-7 h-7 flex items-center justify-center"
-          >
-            {{ display }}
-          </div>
-        </div>
+
+      <div class="timer flex-1 text-xl text-center pt-2 absolute left-1/2">
+        <progress-bar :progress="percentile" :display="display" />
+      </div>
+      <div
+        id="lives"
+        class="flex flex-row justify-evenly items-center w-16 h-10 pr-2 pl-1 rounded-full"
+      >
+        <heart id="heart" />
+        <span class="">{{ currentLives }}</span>
       </div>
     </div>
   </header>
@@ -56,11 +34,13 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, reactive, computed } from 'vue'
+import 'vue3-circle-progress/dist/circle-progress.css'
 import Heart from '@/components/Icons/Heart.vue'
+import ProgressBar from '@/components/ProgressBar/ProgressBar.vue'
 
 export default defineComponent({
   name: 'Timer',
-  components: { Heart },
+  components: { Heart, ProgressBar },
   props: {
     percentile: {
       type: Number,
@@ -90,16 +70,19 @@ export default defineComponent({
   },
 })
 </script>
-<style>
-#points {
-  background: #aed0fd;
-}
+<style scoped>
 #points-bg {
   animation-iteration-count: 1;
 }
-
+#lives,
+#points {
+  border-width: 1px;
+}
 #heart {
   width: 50%;
   height: 50%;
+}
+.timer {
+  transform: translateX(-50%);
 }
 </style>

@@ -1,4 +1,5 @@
 import { createApp } from 'vue'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as definitions from './index.d'
 import App from './App.vue'
 import './registerServiceWorker'
