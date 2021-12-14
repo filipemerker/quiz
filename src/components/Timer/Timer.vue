@@ -1,19 +1,24 @@
 <template>
-  <header class="w-full flex flex-wrap flex-col text-gray-100 font-bold">
+  <header
+    id="header"
+    class="w-full flex flex-wrap flex-col text-gray-100 font-bold"
+  >
     <div
-      class="w-full py-5 px-4 flex flex-wrap items-center justify-center flex-row"
+      class="w-full py-3 px-4 mt-6 flex flex-wrap items-center justify-between flex-row relative"
     >
-      <div id="points" class="relative leading-4 italic rounded-full w-16 h-10">
+      <div
+        id="points"
+        class="relative leading-4 italic rounded-full w-auto h-10 px-3"
+      >
         <div
           class="w-full h-full rounded-full z-10 relative flex items-center justify-center"
         >
           {{ points }}
-          <br />
-          pts
+          xp
         </div>
       </div>
 
-      <div class="timer flex-1 text-xl text-center">
+      <div class="timer flex-1 text-xl text-center pt-2 absolute left-1/2">
         <progress-bar :progress="percentile" :display="display" />
       </div>
       <div
@@ -65,7 +70,7 @@ export default defineComponent({
   },
 })
 </script>
-<style>
+<style scoped>
 #points-bg {
   animation-iteration-count: 1;
 }
@@ -76,5 +81,8 @@ export default defineComponent({
 #heart {
   width: 50%;
   height: 50%;
+}
+.timer {
+  transform: translateX(-50%);
 }
 </style>
