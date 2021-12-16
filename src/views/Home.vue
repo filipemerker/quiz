@@ -16,18 +16,18 @@
         <div
           class="px-10 lg:px-20 flex flex-col text-center lg:text-left items-center lg:items-start w-full"
         >
-          <logo class="block sm:hidden mb-10" />
-          <h2
+          <logo id="mobile-logo" class="block sm:hidden mb-10 scale-125" />
+          <h1
             data-testid="title"
             class="text-4xl lg:text-5xl w-full max-w-xl xl:max-w-2xl font-bold leading-11"
           >
-            Aumente seu conhecimento Bíblico!
-          </h2>
+            Como conhecer melhor a Bíblia?
+          </h1>
           <p
             data-testid="description-title"
             class="text-gray-700 w-full max-w-xl md:w-9/12 text-xl font-normal mt-7 leading-5 m:leading-8"
           >
-            Descubra novos textos e eventos bíblicos que irão abençoar
+            Memorize textos, referênccias e eventos bíblicos que irão abençoar
             profundamente a sua vida.
           </p>
           <button
@@ -45,43 +45,39 @@
         />
       </div>
     </section>
-    <section class="flex flex-row w-full justify-center ">
-      <div id="cards" class="overflow-hidden py-5 px-8 rounded-2xl mx-3 mb-3">
-        <section
-          class="w-full overflow-auto whitespace-nowrap flex flex-row pl-4 pb-4 mt-3"
+    <h2 class="section-title font-bold text-2xl mt-20">Desafios disponíveis</h2>
+    <section class="flex flex-row w-full">
+      <div
+        id="cards"
+        class="flex flex-wrap flex-row py-5 mt-5 lg:px-20 mx-8 mb-3 w-full"
+      >
+        <router-link
+          v-for="(game, index) in games"
+          :key="game"
+          :class="
+            `w-48 flex-1 card-link outline-none card ${!game.active &&
+              'opacity-50'} gradient-${index} flex flex-col justify-between h-48 mx-2 mb-4 rounded-xl shadow-orange-lg`
+          "
+          :to="game.route"
         >
-          <router-link
-            v-for="(game, index) in games"
-            :key="game"
-            class="card-link outline-none"
-            :to="game.route"
+          <header
+            class="w-full pt-5 px-3 flex flex-col items-start text-left whitespace-pre-wrap"
           >
-            <div
-              :class="
-                `card ${!game.active &&
-                  'opacity-60'} gradient-${index} flex flex-col justify-between flex-shrink-0 w-40 h-48 mr-4 rounded-xl fold shadow-orange-lg`
-              "
+            <span class="font-extrabold text-lg text-white leading-5">
+              {{ game.title }}
+            </span>
+            <span class="text-sm text-white leading-4 mt-2">
+              {{ game.subtitle }}
+            </span>
+          </header>
+          <footer v-if="game.active" class="w-full flex">
+            <button
+              class="shadow-lg w-full h-10 m-3 rounded-md bg-white bg-opacity-30"
             >
-              <header
-                class="w-full pt-5 px-3 flex flex-col items-start text-left whitespace-pre-wrap"
-              >
-                <span class="font-extrabold text-lg text-white leading-5">
-                  {{ game.title }}
-                </span>
-                <span class="text-sm text-white leading-4 mt-2">
-                  {{ game.subtitle }}
-                </span>
-              </header>
-              <footer v-if="game.active" class="w-full flex">
-                <button
-                  class="shadow-lg w-full h-10 m-3 rounded-md bg-white bg-opacity-30"
-                >
-                  <span class="font-bold text-sm text-white">Jogar</span>
-                </button>
-              </footer>
-            </div>
-          </router-link>
-        </section>
+              <span class="font-bold text-sm text-white">Jogar</span>
+            </button>
+          </footer>
+        </router-link>
       </div>
     </section>
   </div>
@@ -123,6 +119,9 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" scoped>
+#mobile-logo {
+  transform: scale(1.25);
+}
 #banner {
   height: calc(100vh - 200px);
 }
@@ -136,6 +135,11 @@ export default defineComponent({
     height: 120%;
   }
 }
+.section-title {
+  background: linear-gradient(90deg, #aacff3 0%, #25315c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 #banner-content-container {
   background-color: rgba(230, 230, 247, 0);
   background-image: radial-gradient(
@@ -144,16 +148,7 @@ export default defineComponent({
   );
   background-size: 13px 13px;
 }
-#cards {
-  background: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-}
 .card {
-  width: calc(50vw - 3rem);
-  max-width: 10rem;
-  min-width: 8rem;
 }
 .card-link {
   -webkit-tap-highlight-color: transparent;
