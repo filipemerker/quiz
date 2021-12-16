@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex justify-center min-h-screen-inner h-full w-screen bg-gradient-to-t from-gray-100 to-gray-50"
+    class="flex text-gray-800 justify-center min-h-screen-inner h-full w-screen bg-gradient-to-t from-gray-100 to-gray-50"
   >
     <router-view v-slot="{ Component }">
       <transition
@@ -20,6 +20,5 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: rgb(40 38 75);
 }
 </style>
