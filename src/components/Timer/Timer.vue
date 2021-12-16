@@ -4,7 +4,7 @@
     class="w-full flex flex-wrap flex-col text-gray-100 font-bold"
   >
     <div
-      class="w-full py-3 px-4 mt-6 flex flex-wrap items-center justify-between flex-row relative"
+      class="w-full py-3 px-4 mt-10 flex flex-wrap items-center justify-between flex-row relative"
     >
       <div
         id="points"
