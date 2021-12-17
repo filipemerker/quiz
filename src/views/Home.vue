@@ -27,7 +27,7 @@
             data-testid="description-title"
             class="text-gray-700 w-full max-w-xl md:w-9/12 text-xl font-normal mt-7 leading-5 m:leading-8"
           >
-            Memorize textos, referênccias e eventos bíblicos que irão abençoar
+            Memorize textos, referências e eventos bíblicos que irão abençoar
             profundamente a sua vida.
           </p>
           <button
@@ -38,47 +38,82 @@
         </div>
 
         <img
-          id="mockup"
+          id="mockup-1"
           class="absolute hidden lg:block"
           src="@/assets/iphone.png"
           alt="iphone mockup"
         />
       </div>
     </section>
-    <h2 class="section-title font-bold text-2xl mt-20">Desafios disponíveis</h2>
-    <section class="flex flex-row w-full">
-      <div
-        id="cards"
-        class="flex flex-wrap flex-row py-5 mt-5 lg:px-20 mx-8 mb-3 w-full"
+
+    <section
+      id="share"
+      class="flex md:flex-row flex-col items-center justify-center w-full mt-20 px-10"
+    >
+      <img
+        id="mockup-2"
+        class="relative w-60"
+        src="@/assets/iphone.png"
+        alt="iphone mockup"
+      />
+      <article
+        class="flex flex-col text-center md:text-left items-center md:items-start justify-center max-w-xl md:ml-10 mt-10 md:mt-0"
       >
-        <router-link
-          v-for="(game, index) in games"
-          :key="game"
-          :class="
-            `w-48 flex-1 card-link outline-none card ${!game.active &&
-              'opacity-50'} gradient-${index} flex flex-col justify-between h-48 mx-2 mb-4 rounded-xl shadow-orange-lg`
-          "
-          :to="game.route"
+        <h2 class="section-title font-bold text-3xl w-auto">
+          Compartilhe seus resultados
+        </h2>
+        <p class=" text-md mt-3">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic
+          voluptatibus magni deserunt optio, doloremque obcaecati soluta omnis
+          quaerat illo facilis, ut ullam quidem ipsum maiores eaque quam dicta
+          laboriosam? Assumenda.
+        </p>
+        <button
+          class="bg-gray-800 text-gray-200 text-md font-bold rounded-md px-5 py-2 flex-grow-0 mt-5"
         >
-          <header
-            class="w-full pt-5 px-3 flex flex-col items-start text-left whitespace-pre-wrap"
+          Aprenda mais sobre a Bíblia!
+        </button>
+      </article>
+    </section>
+
+    <section id="challenges" class=" mt-36">
+      <h2 class="section-title font-bold text-3xl w-auto">
+        Desafios disponíveis
+      </h2>
+      <section class="flex flex-row w-full">
+        <div
+          id="cards"
+          class="flex flex-wrap flex-row justify-center py-5 mt-5 lg:px-20 mx-5 mb-3 w-full"
+        >
+          <router-link
+            v-for="(game, index) in games"
+            :key="game"
+            :class="
+              `w-full sm:w-60 flex-grow-0 card-link outline-none card ${!game.active &&
+                'opacity-50'} gradient-${index} flex flex-col justify-between h-48 mx-5 mb-10 rounded-sm shadow-orange-lg`
+            "
+            :to="game.route"
           >
-            <span class="font-extrabold text-lg text-white leading-5">
-              {{ game.title }}
-            </span>
-            <span class="text-sm text-white leading-4 mt-2">
-              {{ game.subtitle }}
-            </span>
-          </header>
-          <footer v-if="game.active" class="w-full flex">
-            <button
-              class="shadow-lg w-full h-10 m-3 rounded-md bg-white bg-opacity-30"
+            <header
+              class="w-full pt-5 px-3 flex flex-col items-start text-left whitespace-pre-wrap"
             >
-              <span class="font-bold text-sm text-white">Jogar</span>
-            </button>
-          </footer>
-        </router-link>
-      </div>
+              <span class="font-extrabold text-xl text-white leading-5">
+                {{ game.title }}
+              </span>
+              <span class="text-md text-white leading-4 mt-2">
+                {{ game.subtitle }}
+              </span>
+            </header>
+            <footer v-if="game.active" class="w-full flex">
+              <button
+                class="shadow-lg w-full h-10 m-3 rounded-md bg-white bg-opacity-30"
+              >
+                <span class="font-bold text-sm text-white">Jogar</span>
+              </button>
+            </footer>
+          </router-link>
+        </div>
+      </section>
     </section>
   </div>
 </template>
@@ -125,13 +160,16 @@ export default defineComponent({
 #banner {
   height: calc(100vh - 200px);
 }
-#mockup {
+#mockup-1 {
   height: 100%;
   right: 8%;
   transform: rotate(10deg);
 }
+#mockup-2 {
+  transform: rotate(-8deg);
+}
 @media (min-width: 1177px) {
-  #mockup {
+  #mockup-1 {
     height: 120%;
   }
 }
