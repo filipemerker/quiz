@@ -99,7 +99,7 @@
           <Slide v-for="game in games" :key="game">
             <article
               :class="
-                `flex flex-col items-center justify-between w-full h-52 bg-white rounded-md shadow-lg my-10 mx-5 md:mx-10 p-5 card-link outline-none`
+                `flex flex-col items-center justify-between w-full h-60 bg-white rounded-md shadow-lg my-10 mx-5 md:mx-10 p-5 card-link outline-none`
               "
             >
               <header
