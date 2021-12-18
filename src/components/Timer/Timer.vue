@@ -34,7 +34,6 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, reactive, computed } from 'vue'
-import 'vue3-circle-progress/dist/circle-progress.css'
 import Heart from '@/components/Icons/Heart.vue'
 import ProgressBar from '@/components/ProgressBar/ProgressBar.vue'
 

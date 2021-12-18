@@ -3,7 +3,7 @@
     <h1
       id="brand"
       data-testid="title"
-      class="flex text-xl w-full md:w-9/12 font-bold text-left italic"
+      class="flex text-xl w-full font-bold text-left italic"
     >
       <div id="logo-wrapper" class="w-11 h-11 gradient-1 rounded-full">
         <svg
