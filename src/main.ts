@@ -8,6 +8,7 @@ import { setVH } from './helpers/css'
 
 import './assets/css/gradients.css'
 import './assets/css/tailwind.css'
+import './assets/css/fonts.css'
 import router from './router'
 
 // Css mobile viewport hack https://css-tricks.com/the-trick-to-viewport-units-on-mobile/

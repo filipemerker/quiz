@@ -20,6 +20,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'typescript-eslint/no-explicit-any': 0,
     '@typescript-eslint/no-var-requires': 0,
+    'vue/no-v-html': 0,
   },
   overrides: [
     {
