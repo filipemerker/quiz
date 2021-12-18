@@ -46,7 +46,7 @@
 
     <section
       id="share"
-      class="flex md:flex-row flex-col items-center justify-center w-full mt-20 md:mt-44 px-10"
+      class="flex md:flex-row flex-col items-center justify-center w-full mt-44 px-10"
     >
       <div id="mockup-2-wrapper" class=" w-5/6 md:w-96 md:mr-10 mb-10">
         <img
@@ -80,7 +80,7 @@
     <section
       id="challenges"
       ref="challenges"
-      class="flex flex-col mt-36 items-center"
+      class="flex flex-col mt-40 items-center"
     >
       <h2 class="section-title font-bold text-3xl w-auto">
         Desafios disponíveis
@@ -99,7 +99,7 @@
           <Slide v-for="game in games" :key="game">
             <article
               :class="
-                `flex flex-col items-center justify-between w-full h-52 bg-white rounded-md shadow-lg my-10 mx-5 md:mx-10 p-5 card-link outline-none`
+                `flex flex-col items-center justify-between w-full h-60 bg-white rounded-md shadow-lg my-10 mx-5 md:mx-10 p-5 card-link outline-none`
               "
             >
               <header
