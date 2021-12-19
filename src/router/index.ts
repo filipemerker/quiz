@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '../pages/Home/Home.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -12,7 +12,7 @@ const routes: Array<RouteRecordRaw> = [
     name: 'MultipleAnswerChallenge',
     component: () =>
       import(
-        /* webpackChunkName: "about" */ '../views/MultipleAnswerChallenge.vue'
+        /* webpackChunkName: "about" */ '../pages/MultipleAnswerChallenge/MultipleAnswerChallenge.vue'
       ),
   },
 ]
