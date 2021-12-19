@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { defineComponent, Suspense } from 'vue'
-import Challenge from '@/components/MultipleAnswer/Challenge.vue'
+import Challenge from '@/pages/MultipleAnswerChallenge/components/Challenge.vue'
 
 export default defineComponent({
   name: 'App',
