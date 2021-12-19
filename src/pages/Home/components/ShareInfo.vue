@@ -21,24 +21,22 @@
         quaerat illo facilis, ut ullam quidem ipsum maiores eaque quam dicta
         laboriosam? Assumenda.
       </p>
-      <button
-        class="gradient-0 text-white text-md font-bold rounded-md px-5 py-2 flex-grow-0 mt-8"
-        @click="goto('challenges')"
-      >
+
+      <orange-button class="mt-8" @click="goto('challenges')">
         Aprenda mais sobre a Bíblia!
-      </button>
+      </orange-button>
     </article>
   </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import OrangeButton from '@/components/Buttons/OrangeButton.vue'
 import { goto } from '@/helpers'
 
 export default defineComponent({
-  methods: {
-    goto,
-  },
+  components: { OrangeButton },
+  methods: { goto },
 })
 </script>
 

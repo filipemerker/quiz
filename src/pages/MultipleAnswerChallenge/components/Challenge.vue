@@ -22,8 +22,8 @@
 import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { Clock } from '@/helpers/Clock'
-import Question from '@/components/MultipleAnswer/Question.vue'
-import Timer from '@/components/Timer/Timer.vue'
+import Question from '@/pages/MultipleAnswerChallenge/components/Question.vue'
+import Timer from '@/pages/MultipleAnswerChallenge/components/Timer.vue'
 import { createMultipleChoiceQuestion } from '@/helpers/bible'
 import { MultipleAnswerQuestion } from '@/types/Quiz'
 

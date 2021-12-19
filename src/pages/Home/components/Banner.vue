@@ -22,12 +22,9 @@
           Memorize textos, referências e eventos bíblicos que irão abençoar
           profundamente a sua vida.
         </p>
-        <button
-          class="gradient-0 text-white text-md font-bold rounded-md px-5 py-2 flex-grow-0 mt-10"
-          @click="goto('challenges')"
-        >
+        <orange-button class="mt-10" @click="goto('challenges')">
           Aprenda mais sobre a Bíblia!
-        </button>
+        </orange-button>
       </div>
 
       <img
@@ -43,9 +40,10 @@
 import { defineComponent } from 'vue'
 import { goto } from '@/helpers'
 import Logo from '@/components/Icons/Logo.vue'
+import OrangeButton from '@/components/Buttons/OrangeButton.vue'
 
 export default defineComponent({
-  components: { Logo },
+  components: { Logo, OrangeButton },
   methods: {
     goto,
   },

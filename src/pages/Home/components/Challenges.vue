@@ -40,11 +40,10 @@
               />
             </header>
             <footer v-if="game.active" class="w-full flex">
-              <router-link
-                :to="game.route"
-                class="gradient-0 text-white rounded-md w-full text-md font-bold px-5 py-2 flex-grow-0 mt-10"
-              >
-                <span class="font-bold text-sm">Começar o desafio!</span>
+              <router-link :to="game.route" class="card-link w-full">
+                <orange-button class="mt-10 text-sm w-full">
+                  Começar o desafio!
+                </orange-button>
               </router-link>
             </footer>
           </article>
@@ -60,6 +59,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue'
 import { Carousel, Pagination, Slide } from 'vue3-carousel'
+import OrangeButton from '@/components/Buttons/OrangeButton.vue'
 
 import 'vue3-carousel/dist/carousel.css'
 
@@ -68,6 +68,7 @@ export default defineComponent({
     Slide,
     Carousel,
     Pagination,
+    OrangeButton,
   },
   setup() {
     const games = ref([
