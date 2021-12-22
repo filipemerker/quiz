@@ -4,17 +4,25 @@ import {
   BibleBook,
   BibleBooks,
   Bible,
-} from './types'
-import { plusOne, lessOne } from '@/helpers/bible'
-import { random } from '@/helpers'
+  MultipleAnswerQuestion,
+} from '@/types/Quiz'
+import { random, shuffle } from '@/helpers'
+
+export const plusOne = (index: number) => index + 1
+export const lessOne = (index: number) => index - 1
+export const formatBibleReference = ({
+  book,
+  chapter,
+  verse,
+}: PassageReference): string => `${book} ${chapter}:${verse}`
 
 export const getBible = async (): Promise<any> => {
   try {
-    const { NT }: { NT: Bible } = await import('./data/nvi-nt')
+    const { NT }: { NT: Bible } = await import('@/api/data/nvi-nt')
 
     return NT
   } catch (err) {
-    throw new Error(err)
+    throw new Error(err as string)
   }
 }
 
@@ -26,7 +34,7 @@ export const getBook = async (title: string): Promise<BibleBook> => {
       [name, abbrev].includes(title)
     )
   } catch (err) {
-    throw new Error(err)
+    throw new Error(err as string)
   }
 }
 
@@ -49,7 +57,7 @@ export const getPassage = async ({
 
     return verses.slice(lessOne(lessOne(verse)), plusOne(verse))
   } catch (err) {
-    throw new Error(err)
+    throw new Error(err as string)
   }
 }
 
@@ -59,7 +67,7 @@ export const getBookTitles = async (): Promise<BibleBooks> => {
 
     return bible.map(({ name }: { name: string }) => name)
   } catch (err) {
-    throw new Error(err)
+    throw new Error(err as string)
   }
 }
 
@@ -78,6 +86,23 @@ export const getRandomReference = async (): Promise<PassageReference> => {
       verse,
     }
   } catch (err) {
-    throw new Error(err)
+    throw new Error(err as string)
+  }
+}
+
+export const createMultipleChoiceQuestion = async (): Promise<MultipleAnswerQuestion> => {
+  const reference = await getRandomReference()
+  const formattedReference = formatBibleReference(reference)
+  const passage = await getPassage(reference)
+  const alternatives = await Promise.all(
+    new Array(3).fill({}).map(async () => {
+      return formatBibleReference(await getRandomReference())
+    })
+  )
+
+  return {
+    title: passage,
+    rightAlternative: formattedReference,
+    alternatives: shuffle([formattedReference, ...alternatives]),
   }
 }

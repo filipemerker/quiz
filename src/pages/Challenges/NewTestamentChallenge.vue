@@ -5,7 +5,7 @@
   >
     <Suspense>
       <template #default>
-        <Challenge />
+        <Challenge :question-creator="newTestamentQuestionCreator" />
       </template>
     </Suspense>
   </div>
@@ -13,14 +13,24 @@
 
 <script lang="ts">
 import { defineComponent, Suspense } from 'vue'
-import Challenge from '@/pages/MultipleAnswerChallenge/components/Challenge.vue'
+import {
+  createQuestionCreator,
+  QuestionTypes,
+} from '@/factories/questionCreator/createQuestionCreator'
+
+import Challenge from '@/pages/Challenges/components/Challenge.vue'
+
+const newTestamentQuestionCreator = createQuestionCreator(
+  QuestionTypes.GuessTheReference,
+  QuestionTypes.Quiz
+)
 
 export default defineComponent({
-  name: 'App',
   components: { Challenge },
   setup() {
     return {
       Suspense,
+      newTestamentQuestionCreator,
     }
   },
 })

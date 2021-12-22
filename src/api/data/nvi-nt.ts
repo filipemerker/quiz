@@ -1,6 +1,4 @@
-﻿import { Bible } from '../types'
-
-export const NT: Bible = [
+﻿export const NT = [
   {
     abbrev: 'mt',
     chapters: [

@@ -1,76 +1,76 @@
-import { Questions } from '../types'
-
-export const NT: Questions = [
+export const NT = [
   {
-    title: "Quem iniciou o ministério na cidade de Colossos?",
+    title: 'Quem iniciou o ministério na cidade de Colossos?',
     options: [
       {
-        title: "Epafras",
-        correct: true
+        title: 'Epafras',
+        correct: true,
       },
       {
-        title: "Paulo",
+        title: 'Paulo',
       },
       {
-        title: "Lucas"
+        title: 'Lucas',
       },
       {
-        title: "Onésimo"
-      }
-    ]
+        title: 'Onésimo',
+      },
+    ],
   },
   {
-    title: "Qual o nome do servo de Filemom que também era cooperador de Paulo no ministério?",
+    title:
+      'Qual o nome do servo de Filemom que também era cooperador de Paulo no ministério?',
     options: [
       {
-        title: "Onésimo",
-        correct: true
+        title: 'Onésimo',
+        correct: true,
       },
       {
-        title: "Epafrodito",
+        title: 'Epafrodito',
       },
       {
-        title: "Irineu"
+        title: 'Irineu',
       },
       {
-        title: "Onesíforo"
-      }
-    ]
+        title: 'Onesíforo',
+      },
+    ],
   },
   {
-    title: "Qual dessas não é uma das chamadas \"cartas do cárcere\"?",
+    title: 'Qual dessas não é uma das chamadas "cartas do cárcere"?',
     options: [
       {
-        title: "Romanos",
-        correct: true
+        title: 'Romanos',
+        correct: true,
       },
       {
-        title: "Efésios",
+        title: 'Efésios',
       },
       {
-        title: "Filemom"
+        title: 'Filemom',
       },
       {
-        title: "Colossenses"
-      }
-    ]
+        title: 'Colossenses',
+      },
+    ],
   },
   {
-    title: "Em 2 Samuel, por um espaço de tempo Davi serviu como comandante dos Filisteus, enquanto fugia de Saul. Nesse tempo, uma cidade foi saqueada pelos amalequitas, que levaram todos os bens de Davi e seus valentes. Qual o nome desta cidade?",
+    title:
+      'Em 2 Samuel, por um espaço de tempo Davi serviu como comandante dos Filisteus, enquanto fugia de Saul. Nesse tempo, uma cidade foi saqueada pelos amalequitas, que levaram todos os bens de Davi e seus valentes. Qual o nome desta cidade?',
     options: [
       {
-        title: "Ziclague",
-        correct: true
+        title: 'Ziclague',
+        correct: true,
       },
       {
-        title: "Zebulom",
+        title: 'Zebulom',
       },
       {
-        title: "Asdode"
+        title: 'Asdode',
       },
       {
-        title: "Maanaim"
-      }
-    ]
+        title: 'Maanaim',
+      },
+    ],
   },
 ]

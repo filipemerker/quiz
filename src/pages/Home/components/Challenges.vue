@@ -82,7 +82,7 @@ export default defineComponent({
         title: 'Versículos do Novo Testamento',
         subtitle:
           'Acerte o máximo de <strong>referências bíblicas</strong> que conseguir no <strong>Novo Testamento</strong>.',
-        route: '/multipla-escolha',
+        route: '/multipla-escolha/novo-testamento',
         active: true,
       },
       {
