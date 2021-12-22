@@ -21,8 +21,7 @@ import {
 import Challenge from '@/pages/Challenges/components/Challenge.vue'
 
 const newTestamentQuestionCreator = createQuestionCreator(
-  QuestionTypes.GuessTheReference,
-  QuestionTypes.Quiz
+  QuestionTypes.GuessTheReference
 )
 
 export default defineComponent({

@@ -1,7 +1,8 @@
 import { MultipleAnswerQuestion } from '@/types/Quiz'
 import { createMultipleChoiceQuestion } from './newTestamentQuestionCreator'
-import QuestionComponent from '@/pages/Challenges/components/Question.vue'
-import BibleQuizQuestion from '@/pages/Challenges/questions/BibleQuizQuestion.vue'
+import GuessTheReferenceQuestion from '@/pages/Challenges/questions/GuessTheReferenceQuestion.vue'
+import GuessTheVerseQuestion from '@/pages/Challenges/questions/GuessTheVerseQuestion.vue'
+import QuizQuestion from '@/pages/Challenges/questions/QuizQuestion.vue'
 import { random } from '@/helpers'
 
 export enum QuestionTypes {
@@ -11,8 +12,9 @@ export enum QuestionTypes {
 }
 
 export type QuestionComponentType =
-  | typeof QuestionComponent
-  | typeof BibleQuizQuestion
+  | typeof GuessTheVerseQuestion
+  | typeof GuessTheReferenceQuestion
+  | typeof QuizQuestion
 
 type QuestionObjectType = {
   generate: () => Promise<MultipleAnswerQuestion>
@@ -31,15 +33,15 @@ export type QuestionCreatorType = () => Promise<QuestionType>
 export const Questions: QuestionsObjectType = {
   [QuestionTypes.GuessTheReference]: {
     generate: createMultipleChoiceQuestion,
-    component: QuestionComponent,
+    component: GuessTheReferenceQuestion,
   },
   [QuestionTypes.GuessTheVerse]: {
     generate: createMultipleChoiceQuestion,
-    component: QuestionComponent,
+    component: GuessTheVerseQuestion,
   },
   [QuestionTypes.Quiz]: {
     generate: createMultipleChoiceQuestion,
-    component: BibleQuizQuestion,
+    component: QuizQuestion,
   },
 }
 
@@ -48,7 +50,7 @@ export const createQuestionCreator = (
 ): QuestionCreatorType => async () => {
   const randomType = types[random(1, types.length) - 1]
   const selectedQuestion = Questions[randomType]
-  console.log(randomType)
+
   return {
     question: await selectedQuestion.generate(),
     type: randomType,

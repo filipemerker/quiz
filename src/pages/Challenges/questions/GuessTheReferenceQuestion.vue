@@ -5,12 +5,12 @@
         <span
           v-if="context"
           data-testid="question-title-before"
-          class="select-none text-lg mb-3 opacity-80 text-red-700 w-full"
+          class="select-none text-lg mb-3 opacity-80 text-white w-full"
         >
           {{ question.title[0] }}
         </span>
         <span
-          class="select-none text-xl font-bold w-full text-red-700"
+          class="select-none text-xl font-bold w-full text-white"
           data-testid="question-title"
           @click="toggleContext(true)"
         >
@@ -19,7 +19,7 @@
         <span
           v-if="context"
           data-testid="question-title-after"
-          class="select-none text-lg mt-4 opacity-80 text-red-700 w-full"
+          class="select-none text-lg mt-4 opacity-80 text-white w-full"
         >
           {{ question.title[2] }}
         </span>
@@ -53,7 +53,7 @@ import { MultipleAnswerQuestion } from '@/types/Quiz'
 import { defineComponent, PropType, ref, watch } from 'vue'
 
 export default defineComponent({
-  name: 'BibleQuestion',
+  name: 'Question',
   props: {
     question: {
       type: Object as PropType<MultipleAnswerQuestion>,
