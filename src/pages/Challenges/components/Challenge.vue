@@ -63,15 +63,12 @@ export default defineComponent({
       }
     }
     const clock = new Clock({
-      max: 300000,
+      max: newQuestion.value.time,
       step: 100,
-      onStart: async () => {
-        await getNewQuestion()
-      },
       onFinish: async () => {
         onWrongAnswer()
         await getNewQuestion()
-        clock.reset()
+        clock.reset({ max: newQuestion.value.time })
         clock.resume()
       },
     })
@@ -89,7 +86,7 @@ export default defineComponent({
 
         await getNewQuestion()
         showResults.value = false
-        clock.reset()
+        clock.reset({ max: newQuestion.value.time })
         clock.resume()
       }, 2500)
     }
