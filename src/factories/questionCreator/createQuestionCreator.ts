@@ -1,5 +1,8 @@
 import { MultipleAnswerQuestion } from '@/types/Quiz'
-import { createMultipleChoiceQuestion } from './newTestamentQuestionCreator'
+import {
+  createGuessTheReferenceQuestion,
+  createGuessTheVerseQuestion,
+} from './newTestamentQuestionCreator'
 import GuessTheReferenceQuestion from '@/pages/Challenges/questions/GuessTheReferenceQuestion.vue'
 import GuessTheVerseQuestion from '@/pages/Challenges/questions/GuessTheVerseQuestion.vue'
 import QuizQuestion from '@/pages/Challenges/questions/QuizQuestion.vue'
@@ -32,15 +35,15 @@ export type QuestionCreatorType = () => Promise<QuestionType>
 
 export const Questions: QuestionsObjectType = {
   [QuestionTypes.GuessTheReference]: {
-    generate: createMultipleChoiceQuestion,
+    generate: createGuessTheReferenceQuestion,
     component: GuessTheReferenceQuestion,
   },
   [QuestionTypes.GuessTheVerse]: {
-    generate: createMultipleChoiceQuestion,
+    generate: createGuessTheVerseQuestion,
     component: GuessTheVerseQuestion,
   },
   [QuestionTypes.Quiz]: {
-    generate: createMultipleChoiceQuestion,
+    generate: createGuessTheReferenceQuestion,
     component: QuizQuestion,
   },
 }

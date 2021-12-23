@@ -90,19 +90,38 @@ export const getRandomReference = async (): Promise<PassageReference> => {
   }
 }
 
-export const createMultipleChoiceQuestion = async (): Promise<MultipleAnswerQuestion> => {
+export const createGuessTheReferenceQuestion = async (): Promise<MultipleAnswerQuestion> => {
   const reference = await getRandomReference()
   const formattedReference = formatBibleReference(reference)
   const passage = await getPassage(reference)
   const alternatives = await Promise.all(
-    new Array(3).fill({}).map(async () => {
-      return formatBibleReference(await getRandomReference())
-    })
+    new Array(3)
+      .fill({})
+      .map(async () => formatBibleReference(await getRandomReference()))
   )
 
   return {
     title: passage,
     rightAlternative: formattedReference,
     alternatives: shuffle([formattedReference, ...alternatives]),
+  }
+}
+
+export const createGuessTheVerseQuestion = async (): Promise<MultipleAnswerQuestion> => {
+  const reference = await getRandomReference()
+  const formattedReference = formatBibleReference(reference)
+  const { 1: passage } = await getPassage(reference)
+  const alternatives = await Promise.all(
+    new Array(3).fill({}).map(async () => {
+      const { 1: passage } = await getPassage(await getRandomReference())
+
+      return passage
+    })
+  )
+
+  return {
+    title: formattedReference,
+    rightAlternative: passage,
+    alternatives: shuffle([passage, ...alternatives]),
   }
 }

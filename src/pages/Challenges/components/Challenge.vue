@@ -9,7 +9,7 @@
     />
     <div
       v-if="newQuestion.question"
-      class="w-full flex-grow flex items-stretch"
+      class="w-full h-full flex-grow flex items-stretch"
     >
       <questions-renderer
         :type="newQuestion.type"
@@ -63,7 +63,7 @@ export default defineComponent({
       }
     }
     const clock = new Clock({
-      max: 30000,
+      max: 300000,
       step: 100,
       onStart: async () => {
         await getNewQuestion()

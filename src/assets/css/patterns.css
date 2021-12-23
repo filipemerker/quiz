@@ -1,7 +1,16 @@
 .background-dotted-pattern {
   background-color: rgba(230, 230, 247, 0);
   background-image: radial-gradient(
-    #ffffff 0.65px,
+    rgba(255, 255, 255, 1) 0.65px,
+    rgba(230, 230, 247, 0) 0.65px
+  );
+  background-size: 13px 13px;
+}
+
+.background-dotted-pattern-alpha-05 {
+  background-color: rgba(230, 230, 247, 0);
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.5) 0.65px,
     rgba(230, 230, 247, 0) 0.65px
   );
   background-size: 13px 13px;

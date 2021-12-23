@@ -1,12 +1,16 @@
 <template>
   <div v-for="(Question, currentType) in Questions" :key="currentType">
-    <component
-      :is="Question.component"
+    <div
       v-if="Number(currentType) === type"
-      :question="question"
-      :on-select="onSelect"
-      :show-results="showResults"
-    />
+      class="h-full flex-grow flex items-stretch"
+    >
+      <component
+        :is="Question.component"
+        :question="question"
+        :on-select="onSelect"
+        :show-results="showResults"
+      />
+    </div>
   </div>
 </template>
 

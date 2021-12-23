@@ -1,13 +1,12 @@
 <template>
-  <div
-    key="Challenge"
-    class="w-screen min-h-screen-inner flex justify-center gradient-3"
-  >
-    <Suspense>
-      <template #default>
-        <Challenge :question-creator="newTestamentQuestionCreator" />
-      </template>
-    </Suspense>
+  <div key="Challenge" class="w-screen min-h-screen-inner gradient-3">
+    <div class="w-full background-dotted-pattern-alpha-05 flex justify-center">
+      <Suspense>
+        <template #default>
+          <Challenge :question-creator="newTestamentQuestionCreator" />
+        </template>
+      </Suspense>
+    </div>
   </div>
 </template>
 
@@ -21,6 +20,7 @@ import {
 import Challenge from '@/pages/Challenges/components/Challenge.vue'
 
 const newTestamentQuestionCreator = createQuestionCreator(
+  QuestionTypes.GuessTheVerse,
   QuestionTypes.GuessTheReference
 )
 

@@ -7,7 +7,7 @@
       <div
         class="gradient-1 w-full max-w-4xl h-44 shadow-none -mb-40 opacity-70"
       >
-        <div class="background-pattern w-full h-full" />
+        <div class="background-dotted-pattern w-full h-full" />
       </div>
       <Carousel
         v-model="currentSlide"

@@ -1,11 +1,11 @@
 export type MultipleAnswerQuestion = {
   title: BiblePassage
   rightAlternative: string
-  alternatives: string[]
+  alternatives: string | string[]
 }
 export type MultipleAnswerChallenge = MultipleAnswerQuestion[]
 
-export type BiblePassage = string[]
+export type BiblePassage = string[] | string
 export type BibleChapter = string[]
 export type BibleBook = {
   abbrev: string
