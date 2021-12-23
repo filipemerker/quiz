@@ -1,10 +1,10 @@
 <template>
   <div class="flex flex-col justify-between">
     <div class="w-full flex-grow flex flex-col justify-center">
-      <div class=" text-left flex flex-wrap flex-col py-8 mx-5 mb-4">
-        <span class="text-md w-full text-white">
-          Qual a passagem de
-        </span>
+      <div class=" text-left flex flex-wrap flex-col py-8 mx-5 mb-3 mt-3">
+        <question-label>
+          Qual é o texto deste versículo?
+        </question-label>
         <span
           class="select-none text-2xl font-bold w-full text-white"
           data-testid="question-title"
@@ -36,10 +36,11 @@
 import { defineComponent, PropType } from 'vue'
 import { MultipleAnswerQuestion } from '@/types/Quiz'
 import BlueButton from '@/components/Buttons/BlueButton.vue'
+import QuestionLabel from '@/components/Labels/QuestionLabel.vue'
 
 export default defineComponent({
   name: 'Question',
-  components: { BlueButton },
+  components: { BlueButton, QuestionLabel },
   props: {
     question: {
       type: Object as PropType<MultipleAnswerQuestion>,

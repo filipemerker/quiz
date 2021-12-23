@@ -1,7 +1,13 @@
 <template>
   <div class="flex flex-col justify-between">
     <div class="w-full flex-grow flex flex-col justify-center">
-      <div class=" text-left  flex flex-wrap flex-col py-8 mx-5 mb-6">
+      <div class=" text-left flex flex-wrap flex-col py-8 mx-5 mb-6">
+        <question-label class="mb-4">
+          Que versícule é este?
+          <span class="text-xs w-full text-gray-500 opacity-80">
+            <i>Clique para ver o contexto.</i>
+          </span>
+        </question-label>
         <span
           v-if="context"
           data-testid="question-title-before"
@@ -48,10 +54,11 @@
 import { defineComponent, PropType, ref, watch } from 'vue'
 import { MultipleAnswerQuestion } from '@/types/Quiz'
 import BlueButton from '@/components/Buttons/BlueButton.vue'
+import QuestionLabel from '@/components/Labels/QuestionLabel.vue'
 
 export default defineComponent({
   name: 'Question',
-  components: { BlueButton },
+  components: { BlueButton, QuestionLabel },
   props: {
     question: {
       type: Object as PropType<MultipleAnswerQuestion>,
