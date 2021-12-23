@@ -17,15 +17,6 @@
   background-image: linear-gradient(90deg, #9ccdfe 0%, #94aafd 100%);
 }
 
-.background-dotted-pattern {
-  background-color: rgba(230, 230, 247, 0);
-  background-image: radial-gradient(
-    #ffffff 0.65px,
-    rgba(230, 230, 247, 0) 0.65px
-  );
-  background-size: 13px 13px;
-}
-
 .gradient-text {
   background: linear-gradient(90deg, #aacff3 0%, #25315c 100%);
   background-clip: text;

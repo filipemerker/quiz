@@ -8,11 +8,11 @@ const routes: Array<RouteRecordRaw> = [
     component: Home,
   },
   {
-    path: '/multipla-escolha',
-    name: 'MultipleAnswerChallenge',
+    path: '/multipla-escolha/novo-testamento',
+    name: 'NewTestamentChallenge',
     component: () =>
       import(
-        /* webpackChunkName: "about" */ '../pages/MultipleAnswerChallenge/MultipleAnswerChallenge.vue'
+        /* webpackChunkName: "about" */ '../pages/Challenges/NewTestamentChallenge.vue'
       ),
   },
 ]

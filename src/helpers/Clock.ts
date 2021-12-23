@@ -28,7 +28,7 @@ export class Clock {
     max?: number
     step: number
     onFinish: () => void
-    onStart: () => void
+    onStart?: () => void
   }) {
     this.clock = setGlobalInterval(this.onInterval, step)
 
@@ -41,7 +41,7 @@ export class Clock {
     this.percentile = ref(0)
     this.display = ref(this.getDisplay())
 
-    Promise.resolve(onStart())
+    Promise.resolve(onStart?.())
   }
 
   private hasReachedMax = () => this.time.value >= this.max
@@ -68,7 +68,8 @@ export class Clock {
     return (max - time).toString()
   }
 
-  public reset = () => {
+  public reset: (config?: { max: number }) => void = config => {
+    this.max = config ? config.max : this.max
     this.time.value = 0
     this.percentile.value = 0
   }

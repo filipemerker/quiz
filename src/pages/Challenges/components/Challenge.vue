@@ -7,10 +7,13 @@
       :points="points"
       :current-lives="currentLives"
     />
-    <div v-if="question" class="w-full flex-grow flex items-stretch">
-      <Question
-        data-testid="question"
-        :question="question"
+    <div
+      v-if="newQuestion.question"
+      class="w-full h-full flex-grow flex items-stretch"
+    >
+      <questions-renderer
+        :type="newQuestion.type"
+        :question="newQuestion.question"
         :on-select="onSelect"
         :show-results="showResults"
       />
@@ -19,26 +22,34 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, PropType } from 'vue'
 import { useRouter } from 'vue-router'
+import {
+  QuestionType,
+  QuestionCreatorType,
+} from '@/factories/questionCreator/createQuestionCreator'
 import { Clock } from '@/helpers/Clock'
-import Question from '@/pages/MultipleAnswerChallenge/components/Question.vue'
-import Timer from '@/pages/MultipleAnswerChallenge/components/Timer.vue'
-import { createMultipleChoiceQuestion } from '@/helpers/bible'
-import { MultipleAnswerQuestion } from '@/types/Quiz'
+import Timer from '@/pages/Challenges/components/Timer.vue'
+import QuestionsRenderer from '@/pages/Challenges/components/QuestionsRenderer.vue'
 
 export default defineComponent({
   name: 'Challenge',
-  components: { Question, Timer },
-  async setup() {
+  components: { Timer, QuestionsRenderer },
+  props: {
+    questionCreator: {
+      type: Function as PropType<QuestionCreatorType>,
+      required: true,
+    },
+  },
+  async setup(props) {
     const { push } = useRouter()
     const currentLives = ref<number>(5)
     const points = ref<number>(0)
     const showResults = ref<boolean>(false)
-    const question = ref<MultipleAnswerQuestion | null>(null)
+    const newQuestion = ref<QuestionType>(await props.questionCreator())
 
-    const getNewQuestion = async (): Promise<void> => {
-      question.value = await createMultipleChoiceQuestion()
+    const getNewQuestion = async () => {
+      newQuestion.value = await props.questionCreator()
     }
 
     const onRightAnswer = () => {
@@ -52,15 +63,12 @@ export default defineComponent({
       }
     }
     const clock = new Clock({
-      max: 30000,
+      max: newQuestion.value.time,
       step: 100,
-      onStart: async () => {
-        await getNewQuestion()
-      },
       onFinish: async () => {
         onWrongAnswer()
         await getNewQuestion()
-        clock.reset()
+        clock.reset({ max: newQuestion.value.time })
         clock.resume()
       },
     })
@@ -78,23 +86,20 @@ export default defineComponent({
 
         await getNewQuestion()
         showResults.value = false
-        clock.reset()
+        clock.reset({ max: newQuestion.value.time })
         clock.resume()
       }, 2500)
     }
 
     return {
-      Question,
-      question,
-      onSelect,
       percentile: clock.percentile,
       display: clock.display,
-      points,
       currentLives,
+      newQuestion,
       showResults,
+      onSelect,
+      points,
     }
   },
 })
 </script>
-
-<style lang="postcss" scoped></style>

@@ -35,7 +35,7 @@
 <script lang="ts">
 import { defineComponent, toRefs, reactive, computed } from 'vue'
 import Heart from '@/components/Icons/Heart.vue'
-import ProgressBar from '@/pages/MultipleAnswerChallenge/components/ProgressBar.vue'
+import ProgressBar from '@/pages/Challenges/components/ProgressBar.vue'
 
 export default defineComponent({
   name: 'Timer',

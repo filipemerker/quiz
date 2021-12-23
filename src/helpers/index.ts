@@ -9,8 +9,5 @@ export const goto = (id: string) => {
   const element = document.getElementById(id) as HTMLElement
   const top = element.offsetTop - 100
 
-  window.scrollTo({
-    top,
-    behavior: 'smooth',
-  })
+  window.scrollTo({ top, behavior: 'smooth' })
 }

@@ -7,7 +7,7 @@
       <div
         class="gradient-1 w-full max-w-4xl h-44 shadow-none -mb-40 opacity-70"
       >
-        <div class="background-pattern w-full h-full" />
+        <div class="background-dotted-pattern w-full h-full" />
       </div>
       <Carousel
         v-model="currentSlide"
@@ -82,7 +82,7 @@ export default defineComponent({
         title: 'Versículos do Novo Testamento',
         subtitle:
           'Acerte o máximo de <strong>referências bíblicas</strong> que conseguir no <strong>Novo Testamento</strong>.',
-        route: '/multipla-escolha',
+        route: '/multipla-escolha/novo-testamento',
         active: true,
       },
       {
