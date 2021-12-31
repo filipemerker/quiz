@@ -3,7 +3,7 @@
     key="Home"
     class="flex flex-col min-h-screen h-full w-full justify-start"
   >
-    <logo class="hidden sm:block mt-10" />
+    <logo class="hidden sm:block mt-10 px-10" />
     <banner />
     <share-info />
     <challenges />
