@@ -59,7 +59,7 @@ export default defineComponent({
       currentLives.value -= 1
 
       if (currentLives.value < 1) {
-        push('/')
+        push(`/sucesso/${points.value}`)
       }
     }
     const clock = new Clock({

@@ -8,7 +8,7 @@
       <div
         class="px-10 lg:px-20 flex flex-col text-center lg:text-left items-center lg:items-start w-full"
       >
-        <logo class="block sm:hidden mb-10" />
+        <logo class="block sm:hidden mb-10 px-10" />
         <h1
           data-testid="title"
           class="text-4xl lg:text-5xl w-full max-w-xl xl:max-w-2xl font-bold leading-11"
@@ -17,7 +17,7 @@
         </h1>
         <p
           data-testid="description-title"
-          class="text-gray-600 w-full max-w-xl md:w-9/12 text-lg font-normal mt-7 m:leading-8"
+          class="text-white w-full max-w-xl md:w-9/12 text-lg font-normal mt-7 m:leading-8"
         >
           Memorize textos, referências e eventos bíblicos que irão abençoar
           profundamente a sua vida.

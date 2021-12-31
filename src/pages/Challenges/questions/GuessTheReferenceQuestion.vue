@@ -4,7 +4,7 @@
       <div class=" text-left flex flex-wrap flex-col py-8 mx-5 mb-6">
         <question-label class="mb-4">
           Que versícule é este?
-          <span class="text-xs w-full text-gray-500 opacity-80">
+          <span class="text-xs w-full text-gray-200 opacity-80">
             <i>Clique para ver o contexto.</i>
           </span>
         </question-label>
