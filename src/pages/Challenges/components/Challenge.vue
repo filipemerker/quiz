@@ -100,10 +100,12 @@ export default defineComponent({
           onWrongAnswer(clock)
         }
 
-        await getNewQuestion()
-        showResults.value = false
-        clock.reset({ max: newQuestion.value.time })
-        clock.resume()
+        if (currentLives.value > 0) {
+          await getNewQuestion()
+          showResults.value = false
+          clock.reset({ max: newQuestion.value.time })
+          clock.resume()
+        }
       }, 2500)
     }
 
