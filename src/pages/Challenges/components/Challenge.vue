@@ -91,22 +91,25 @@ export default defineComponent({
 
     const onSelectOption = (option: string, rightAlternative: string) => {
       clock.stop()
+
+      if (!showResults.value) {
+        setTimeout(async () => {
+          if (option === rightAlternative) {
+            onRightAnswer()
+          } else {
+            onWrongAnswer(clock)
+          }
+
+          if (currentLives.value > 0) {
+            await getNewQuestion()
+            showResults.value = false
+            clock.reset({ max: newQuestion.value.time })
+            clock.resume()
+          }
+        }, 2500)
+      }
+
       showResults.value = true
-
-      setTimeout(async () => {
-        if (option === rightAlternative) {
-          onRightAnswer()
-        } else {
-          onWrongAnswer(clock)
-        }
-
-        if (currentLives.value > 0) {
-          await getNewQuestion()
-          showResults.value = false
-          clock.reset({ max: newQuestion.value.time })
-          clock.resume()
-        }
-      }, 2500)
     }
 
     return {
