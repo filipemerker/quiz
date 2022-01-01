@@ -3,7 +3,10 @@
     <div class="w-full background-dotted-pattern-alpha-05 flex justify-center">
       <Suspense>
         <template #default>
-          <Challenge :question-creator="newTestamentQuestionCreator" />
+          <Challenge
+            challenge-type="newTestament"
+            :question-creator="newTestamentQuestionCreator"
+          />
         </template>
       </Suspense>
     </div>

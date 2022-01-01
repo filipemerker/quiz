@@ -5,7 +5,7 @@
     <div class="mockup-wrapper w-5/6 md:w-96 md:mr-10 mb-10">
       <img
         class="mockup relative w-full rounded-md"
-        src="https://assets.startbootstrap.com/img/screenshots-product-pages/sb-ui-kit-pro/landing-portfolio.png"
+        src="@/assets/parabens.jpg"
         alt="..."
       />
     </div>
