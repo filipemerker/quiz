@@ -13,7 +13,7 @@ export class StorageItem {
   }
 }
 
-export class LocalStorageProvider {
+export class LocalStorageClient {
   localStorageSupported: boolean
 
   constructor() {

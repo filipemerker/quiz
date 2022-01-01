@@ -14,7 +14,7 @@
         class="w-full"
         :items-to-show="smallWindow ? 1.3 : 3"
       >
-        <Slide v-for="game in games" :key="game">
+        <Slide v-for="challenge in challenges" :key="challenge">
           <article
             :class="
               `card-link flex flex-col items-center justify-between w-full h-60 bg-white rounded-md shadow-lg my-10 mx-5 md:mx-10 p-5 outline-none`
@@ -23,7 +23,7 @@
             <header
               :class="
                 `w-full pt-2 flex flex-col items-start text-left whitespace-pre-wrap ${
-                  !game.active ? 'opacity-50' : 'opacity-80'
+                  !challenge.active ? 'opacity-50' : 'opacity-80'
                 }`
               "
             >
@@ -32,15 +32,15 @@
                     font-extrabold text-xl text-gray-700 leading-5
                   "
               >
-                {{ game.title }}
+                {{ challenge.title }}
               </h2>
               <span
                 class="text-sm text-gray-600 leading-4 mt-3"
-                v-html="game.subtitle"
+                v-html="challenge.subtitle"
               />
             </header>
-            <footer v-if="game.active" class="w-full flex">
-              <router-link :to="game.route" class="card-link w-full">
+            <footer v-if="challenge.active" class="w-full flex">
+              <router-link :to="challenge.route" class="card-link w-full">
                 <orange-button class="mt-10 text-sm w-full">
                   Começar o desafio!
                 </orange-button>
@@ -71,7 +71,7 @@ export default defineComponent({
     OrangeButton,
   },
   setup() {
-    const games = ref([
+    const challenges = ref([
       {
         title: 'Antigo Testamento',
         subtitle: 'Em breve',
@@ -100,7 +100,7 @@ export default defineComponent({
     })
 
     return {
-      games,
+      challenges,
       currentSlide,
       smallWindow: window.innerWidth < 777,
     }

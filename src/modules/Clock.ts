@@ -9,6 +9,17 @@ const setGlobalInterval = (cb: () => void, step = 100) => {
 }
 type Interval = number | undefined
 
+export interface ClockInstance {
+  running: Ref<boolean>
+  time: Ref<number>
+  percentile: Ref<number>
+  display: Ref<string>
+
+  reset: (config?: { max: number }) => void
+  kill: () => void
+  stop: () => void
+  resume: () => void
+}
 export class Clock {
   private onFinish: () => void
   private clock: Interval

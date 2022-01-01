@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Home from '../pages/Home/Home.vue'
-import Success from '../pages/Success/Success.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -19,8 +18,8 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/sucesso/:id',
     name: 'Success',
-    component: Success,
-    props: true,
+    component: () =>
+      import(/* webpackChunkName: "success" */ '../pages/Success/Success.vue'),
   },
 ]
 

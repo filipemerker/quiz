@@ -4,7 +4,7 @@
     <timer
       :percentile="percentile"
       :display="display"
-      :points="points"
+      :points="challengeData.experience"
       :current-lives="currentLives"
     />
     <div
@@ -14,7 +14,7 @@
       <questions-renderer
         :type="newQuestion.type"
         :question="newQuestion.question"
-        :on-select="onSelect"
+        :on-select="onSelectOption"
         :show-results="showResults"
       />
     </div>
@@ -24,13 +24,16 @@
 <script lang="ts">
 import { defineComponent, ref, PropType } from 'vue'
 import { useRouter } from 'vue-router'
-import {
-  QuestionType,
-  QuestionCreatorType,
-} from '@/factories/questionCreator/createQuestionCreator'
-import { Clock } from '@/helpers/Clock'
+
+import { QuestionType, QuestionCreatorType } from "@/factories/questionCreator/createQuestionCreator"
+import { Clock } from '@/modules/Clock'
+import { challengeDataAPI } from '@/proxies/challengeData/challengeData'
+
 import Timer from '@/pages/Challenges/components/Timer.vue'
 import QuestionsRenderer from '@/pages/Challenges/components/QuestionsRenderer.vue'
+
+import type { ClockInstance } from '@/modules/Clock'
+import type { PartialChallengeData } from '@/proxies/challengeData/challengeData'
 
 export default defineComponent({
   name: 'Challenge',
@@ -40,40 +43,53 @@ export default defineComponent({
       type: Function as PropType<QuestionCreatorType>,
       required: true,
     },
+    challengeType: {
+      type: String,
+      required: true,
+    }
   },
   async setup(props) {
     const { push } = useRouter()
     const currentLives = ref<number>(5)
-    const points = ref<number>(0)
     const showResults = ref<boolean>(false)
     const newQuestion = ref<QuestionType>(await props.questionCreator())
+    const challengeData = ref<PartialChallengeData>({
+      challengeType: props.challengeType,
+      experience: 0
+    })
 
     const getNewQuestion = async () => {
       newQuestion.value = await props.questionCreator()
     }
 
     const onRightAnswer = () => {
-      points.value += 100
+      challengeData.value.experience += 100
     }
-    const onWrongAnswer = () => {
+
+    const onWrongAnswer = async (clockInstance: ClockInstance) => {
       currentLives.value -= 1
 
       if (currentLives.value < 1) {
-        push(`/sucesso/${points.value}`)
+        const { id } = await challengeDataAPI.createChallenge(challengeData.value)
+
+        clockInstance.kill()
+
+        push(`/sucesso/${id}`)
       }
     }
-    const clock = new Clock({
-      max: newQuestion.value.time,
+
+    const clock: ClockInstance = new Clock({
       step: 100,
       onFinish: async () => {
-        onWrongAnswer()
+        await onWrongAnswer(clock)
         await getNewQuestion()
+
         clock.reset({ max: newQuestion.value.time })
         clock.resume()
       },
     })
 
-    const onSelect = (option: string, rightAlternative: string) => {
+    const onSelectOption = (option: string, rightAlternative: string) => {
       clock.stop()
       showResults.value = true
 
@@ -81,7 +97,7 @@ export default defineComponent({
         if (option === rightAlternative) {
           onRightAnswer()
         } else {
-          onWrongAnswer()
+          onWrongAnswer(clock)
         }
 
         await getNewQuestion()
@@ -97,8 +113,8 @@ export default defineComponent({
       currentLives,
       newQuestion,
       showResults,
-      onSelect,
-      points,
+      onSelectOption,
+      challengeData,
     }
   },
 })
