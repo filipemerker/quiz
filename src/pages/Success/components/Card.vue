@@ -1,57 +1,104 @@
 <template>
   <section
     v-if="challenge"
-    class="gradient-1 h-auto w-10/12 md:w-6/12 my-5 flex justify-between flex-col sm:bg-center rounded-3xl"
+    class="challenge-card h-auto py-5 flex justify-between flex-col rounded-3xl"
   >
     <div
-      class="background-dotted-pattern w-full h-full py-10 flex items-center relative"
+      class=" text-white flex flex-col text-center items-center justify-between w-full h-72 lg:h-96"
     >
-      <div class="px-5 lg:px-20 flex flex-col text-center items-center w-full">
-        <logo class="block mb-10 px-0" />
-        <h1
-          data-testid="title"
-          class="text-2xl lg:text-4xl w-full max-w-xl xl:max-w-2xl font-bold leading-11"
-        >
-          Parabéns, você fez {{ challenge.experience }} pontos!
+      <logo class="logo flat block px-0" />
+      <div>
+        <h1 data-testid="title" class="lobster text-6xl w-full font-bold">
+          {{ heading }}
         </h1>
         <p
           data-testid="description-title"
-          class="text-white w-full text-md sm:text-xl font-normal mt-5 m:leading-8"
+          class="montserrat font-normal w-full text-lg"
         >
-          Habite, ricamente, em vós a palavra de Cristo; instruí-vos e
-          aconselhai-vos mutuamente em toda a sabedoria.
-          <br />
-
-          <strong>Colossenses 3:16</strong>
+          Colossenses 3:16
         </p>
-        <div id="badge" class="text-6xl mt-10">🏆</div>
-
-        <div class="flex w-full justify-around mt-10 font-bold underline">
-          <a href="/">Voltar</a>
-          <a href="javascript:history.back()">Jogar Novamente</a>
-        </div>
       </div>
+      <trophy class="relative -bottom-5 h-32 lg:h-40" />
     </div>
   </section>
+  <div class="montserrat w-full text-2xl mt-10" v-html="message" />
+  <div class="flex w-full justify-evenly mt-16 font-bold">
+    <blue-button
+      class="bg-blue-600 bg-opacity-80 pt-1.5 pb-2 flex-grow sm:flex-grow-0 mx-2 sm:px-10"
+      @click="go(-1)"
+    >
+      Jogar Novamente
+    </blue-button>
+    <blue-button
+      class=" bg-blue-600 bg-opacity-80 pt-1.5 pb-2 px-10 flex-grow sm:flex-grow-0 mx-2 sm:px-10"
+      @click="push('/')"
+    >
+      Início
+    </blue-button>
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, Suspense } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import Logo from '@/components/Icons/Logo.vue'
+import Trophy from '@/components/Icons/Trophy.vue'
+import BlueButton from '@/components/Buttons/BlueButton.vue'
 
 import { challengeDataAPI } from '@/proxies/challengeData/challengeData'
 
 export default defineComponent({
   name: 'SuccessCard',
-  components: { Logo },
+  components: { Logo, Trophy, BlueButton },
   async setup() {
+    const { go, push } = useRouter()
     const {
       params: { id },
     } = useRoute()
     const challenge = ref(await challengeDataAPI.getChallengeData(id as string))
 
-    return { challenge, Suspense }
+    const getHeadingGreeting = () => {
+      if (challenge.value.experience >= 2000) return `Excelente!`
+      if (challenge.value.experience >= 500) return `Parabéns!`
+      if (challenge.value.experience < 500) return `Que pena`
+    }
+
+    const getMessage = () => {
+      if (challenge.value.experience >= 2000)
+        return `Você fez <strong>${challenge.value.experience}</strong> pontos. Impressionante!`
+      if (challenge.value.experience >= 500)
+        return `Você fez <strong>${challenge.value.experience}</strong> pontos.`
+      if (challenge.value.experience < 500)
+        return `Você fez apenas <strong>${challenge.value.experience}</strong> pontos.`
+    }
+
+    return {
+      heading: getHeadingGreeting(),
+      message: getMessage(),
+      challenge,
+      Suspense,
+      go,
+      push,
+    }
   },
 })
 </script>
+
+<style scoped>
+.logo {
+  transform: scale(0.75);
+}
+.challenge-card {
+  width: 95%;
+  max-width: 1000px;
+
+  background: url('~@/assets/gradient.svg') no-repeat top center;
+  background-size: 800px;
+}
+
+@media (min-width: 1024px) {
+  .challenge-card {
+    background-size: contain;
+  }
+}
+</style>

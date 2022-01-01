@@ -46,4 +46,8 @@
   transform: rotate(10deg);
   margin-top: 2.5px;
 }
+
+.flat #logo-wrapper {
+  background: #4161d3;
+}
 </style>
