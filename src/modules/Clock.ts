@@ -29,6 +29,7 @@ export class Clock {
   public time: Ref<number>
   public percentile: Ref<number>
   public display: Ref<string>
+  public __clockInstance__: Interval
 
   constructor({
     max = 20000,
@@ -42,6 +43,7 @@ export class Clock {
     onStart?: () => void
   }) {
     this.clock = setGlobalInterval(this.onInterval, step)
+    this.__clockInstance__ = this.clock
 
     this.max = max
     this.step = step

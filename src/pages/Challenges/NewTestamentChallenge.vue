@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, Suspense } from 'vue'
+import { defineComponent, Suspense, onUnmounted } from 'vue'
 import {
   createQuestionCreator,
   QuestionTypes,
@@ -30,6 +30,8 @@ const newTestamentQuestionCreator = createQuestionCreator(
 export default defineComponent({
   components: { Challenge },
   setup() {
+    onUnmounted(() => clearInterval(window.clock)) // TODO think of a workaround
+
     return {
       Suspense,
       newTestamentQuestionCreator,
