@@ -70,11 +70,15 @@ export default defineComponent({
       currentLives.value -= 1
 
       if (currentLives.value < 1) {
-        const { id } = await challengeDataAPI.createChallenge(challengeData.value)
+        try {
+          const { id } = await challengeDataAPI.createChallenge(challengeData.value)
 
-        clockInstance.kill()
+          clockInstance.kill()
 
-        push(`/sucesso/${id}`)
+          push(`/sucesso/${id}`)
+        } catch (err) {
+          alert(JSON.stringify(err))
+        }
       }
     }
 
