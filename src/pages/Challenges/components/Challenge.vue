@@ -76,8 +76,8 @@ export default defineComponent({
           clockInstance.kill()
 
           push(`/sucesso/${id}`)
-        } catch (err) {
-          alert(JSON.stringify(err))
+        } catch ({message}) {
+          alert(JSON.stringify(message))
         }
       }
     }
