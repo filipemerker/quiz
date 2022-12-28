@@ -16,6 +16,14 @@ const routes: Array<RouteRecordRaw> = [
       ),
   },
   {
+    path: '/multipla-escolha/quiz',
+    name: 'QuizChallenge',
+    component: () =>
+      import(
+        /* webpackChunkName: "about" */ '../pages/Challenges/QuizChallenge.vue'
+      ),
+  },
+  {
     path: '/sucesso/:id',
     name: 'Success',
     component: () =>
