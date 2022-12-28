@@ -3,6 +3,7 @@ import {
   createGuessTheReferenceQuestion,
   createGuessTheVerseQuestion,
 } from './newTestamentQuestionCreator'
+import { createQuizQuestion } from './quizQuestionCreator'
 import GuessTheReferenceQuestion from '@/pages/Challenges/questions/GuessTheReferenceQuestion.vue'
 import GuessTheVerseQuestion from '@/pages/Challenges/questions/GuessTheVerseQuestion.vue'
 import QuizQuestion from '@/pages/Challenges/questions/QuizQuestion.vue'
@@ -47,7 +48,7 @@ export const Questions: QuestionsObjectType = {
     time: 60000,
   },
   [QuestionTypes.Quiz]: {
-    generate: createGuessTheReferenceQuestion,
+    generate: createQuizQuestion,
     component: QuizQuestion,
     time: 40000,
   },

@@ -88,8 +88,8 @@ export default defineComponent({
       {
         title: 'Perguntas Bíblicas',
         subtitle: 'Em breve',
-        route: '/',
-        active: false,
+        route: '/multipla-escolha/quiz',
+        active: true,
       },
     ])
 

@@ -1,6 +1,5 @@
 <template>
   <div class="flex relative flex-col min-h-screen-inner h-full w-full max-w-md">
-    <!--<Achievement :icon="'🏅'" />-->
     <timer
       :percentile="percentile"
       :display="display"

@@ -22,13 +22,11 @@ export type PassageReference = {
 
 export interface Option {
   title: string
-}
-export interface CorrectOption extends Option {
   correct: boolean
 }
 export interface Question {
   title: string
-  options: [CorrectOption, Option, Option, Option]
+  options: Array<Option>
 }
 
 export type Questions = Question[]

@@ -120,8 +120,8 @@ export const createGuessTheVerseQuestion = async (): Promise<MultipleAnswerQuest
   )
 
   return {
-    title: formattedReference,
     rightAlternative: passage,
+    title: formattedReference,
     alternatives: shuffle([passage, ...alternatives]),
   }
 }
