@@ -87,7 +87,8 @@ export default defineComponent({
       },
       {
         title: 'Perguntas Bíblicas',
-        subtitle: 'Em breve',
+        subtitle:
+          'Perguntas e respostas sobre as escrituras para <strong>aumentar o seu conhecimento Bíblico</strong>!',
         route: '/multipla-escolha/quiz',
         active: true,
       },
